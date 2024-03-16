@@ -1,6 +1,6 @@
 import React from "react";
 
-import Navbar from '../../Components/NavBar/Navbar'; 
+import Navbar from '../../components/NavBar/Navbar'; 
 import landingImage from "../../assets/land1.png";
 import ai from "../../assets/ai.svg";
 import authentication from "../../assets/authentication.svg";

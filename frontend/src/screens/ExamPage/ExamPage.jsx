@@ -148,7 +148,7 @@ const ExamPage = () => {
               } else if (question.type == "code") {
                 return (
                   <>
-                    <CodeQuestion props={ind}/>
+                    <CodeQuestion props={question} index={ind+1}/>
                   </>
                 );
               } else if (question.type == "MCQ") {
