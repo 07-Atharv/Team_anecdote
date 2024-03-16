@@ -1,3 +1,5 @@
+
+import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./screens/LandingPage";
@@ -19,6 +21,20 @@ const App = () => {
         </Router>
       </div>
     </>
+
+/*
+const App = () => {
+  return (
+    <GoogleLogin
+      onSuccess={(credentialResponse) => {
+        console.log(credentialResponse);
+      }}
+      onError={() => {
+        console.log("Login Failed");
+      }}
+    />
+
+    */
   );
 };
 
