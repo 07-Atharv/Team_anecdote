@@ -9,10 +9,6 @@ const teacherSchema = new Schema({
   profileurl:{
     type: String,
   },
-  clientid: {
-    type: String,
-    required: true
-  },
   email: {
     type: String,
     required: true,

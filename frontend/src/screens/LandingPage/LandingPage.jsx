@@ -1,4 +1,5 @@
 import React from "react";
+
 import Navbar from "../../components/Navbar";
 import landingImage from "../../assets/land1.png";
 import ai from "../../assets/ai.svg";
@@ -7,6 +8,7 @@ import check from "../../assets/check.svg";
 import instant from "../../assets/instant.svg";
 import secure from "../../assets/secure.svg";
 import UI from "../../assets/UI.svg";
+
 
 const LandingPage = () => {
   return (
@@ -40,6 +42,7 @@ const LandingPage = () => {
         <div className="w-1/2 flex justify-start  items-center">
           <img src={landingImage} alt="Langing illustration"></img>
         </div>
+
       </div>
       <h1 className="text-4xl font-semibold	text-center mt-60">
         What’s New Here ?
@@ -109,6 +112,7 @@ const LandingPage = () => {
             for secure login
           </p>
         </div>
+
       </div>
     </>
   );
