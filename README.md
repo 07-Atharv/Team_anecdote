@@ -1,11 +1,11 @@
 # ScoreCraft
 #### Unlock Your Academic Potential with ScoreCraft : Where Excellence Meets Assessment.
 
-ScoreCraft is an advanced examination system that modernizes traditional assessment processes by introducing innovative features to improve the assessment experience. Our platform provides a complete solution to overcome the limitations of conventional methods.
+- ScoreCraft is an advanced examination system that modernizes traditional assessment processes by introducing innovative features to improve the assessment experience. Our platform provides a complete solution to overcome the limitations of conventional methods.
 
 ## Key Features
 
--**Versatile Question Formats:** Our platform accommodates diverse question types, such as text-based, image-based, and code-upload questions, enabling institutions to create customized assessments to meet their specific needs.
+**Versatile Question Formats:** Our platform accommodates diverse question types, such as text-based, image-based, and code-upload questions, enabling institutions to create customized assessments to meet their specific needs.
 
 **Advanced Exam Monitoring:** Utilizing cutting-edge AI technology, our platform maintains exam integrity by continuously monitoring student behavior, identifying irregularities, and promptly flagging potential instances of academic dishonesty.
 
