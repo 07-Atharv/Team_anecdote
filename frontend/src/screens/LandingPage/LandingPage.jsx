@@ -1,14 +1,11 @@
 import React from "react";
-import Spline from "@splinetool/react-spline";
+import Navbar from "../../components/Navbar";
 
 const LandingPage = () => {
-  return ( 
-    <>
-      <div className="h-[200vh]"></div>
-      <div>
-        <Spline scene="https://prod.spline.design/OPBCmAREfay38Tvx/scene.splinecode" />
-      </div>
-    </>
+  return (
+    <div className="">
+<Navbar/>
+    </div>
   );
 };
 
