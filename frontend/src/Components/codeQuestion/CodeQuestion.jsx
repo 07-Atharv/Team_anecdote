@@ -18,18 +18,9 @@ const CodeQuestion = (props) => {
   const [questionState, setQuestionState] = React.useState(false);
   const [answerComponent, setAnswerComponent] = React.useState();
 
-<<<<<<< HEAD
-  const data = props.props
-  const [language,setLanguage] = useState("javascript")
-  const [question,setQuestion] = useState("")
-  const editorRef = useRef(null)
-  
-  const onSelect = (lang)=>{
-=======
   const editorRef = useRef;
 
   const onSelect = (lang) => {
->>>>>>> ddc28ace1b3b99d86ae7c422f1857e11287242d7
     setLanguage(lang);
     setCodeQuestion(CODE_SNIPPETS[lang]);
   };
@@ -40,21 +31,6 @@ const CodeQuestion = (props) => {
   const [codeQuestion, setCodeQuestion] = useState("");
 
   return (
-<<<<<<< HEAD
-    <div >
-       {/* <input
-          type="text" placeholder='Enter Question'
-          value={question}
-          className="mt-4"
-          onChange={(e) => setQuestion(e.target.value)}
-          
-        /> */}
-      <LanguageSelector props={{language,onSelect}}/>
-      <Editor  theme='vs-dark' height="30vh" language={language} onMount={onMount} defaultLanguage="javascript" defaultValue={CODE_SNIPPETS["javascript"]}  value={codeQuestion} onChange={(code)=>{setCodeQuestion(code)}}/>
-    </div>
-  )
-}
-=======
     <div className="shadow-md rounded-xl w-full h-fit p-8">
       <div className="flex flex-row">
         <h1 className="font-bold text-2xl grow">Question {props.index}</h1>
@@ -86,7 +62,6 @@ const CodeQuestion = (props) => {
           {question}
         </p>
       )}
->>>>>>> ddc28ace1b3b99d86ae7c422f1857e11287242d7
 
       <div className="mt-6">
         <LanguageSelector props={{ language, onSelect }} />

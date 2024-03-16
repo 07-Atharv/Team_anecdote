@@ -10,7 +10,7 @@ import UploadWidget from '../ImageAnswer/UploadWidget';
 
 function QuestionBase(props) {
 
-    const { handleDeleteOption,handleChangeOption,handleChangeRadioOption, question, idx, handleAddOption, handleRemoveQuestion, handleChangeQuestion } = props.props
+    const { len,handleDeleteOption,handleChangeOption,handleChangeRadioOption, question, idx, handleAddOption, handleRemoveQuestion, handleChangeQuestion } = props.props
 
     const editorRef = useRef(null)
 
@@ -23,7 +23,7 @@ function QuestionBase(props) {
         editorRef.current = editor
         editor.focus()
     }
-
+ 
 
     const displayLabel = {
         'text': "Text",
@@ -36,12 +36,13 @@ function QuestionBase(props) {
         'check': "Checkboxes",
         'code': "Code"
     }
-    // console.log(question)
+    // console.log(question)  
+     console.log(len)
     return (
         <div className='mt-5 p-5 border rounded-xl'>
             <div className='flex  justify-between items-center'>
                 <h1 className='font-bold'>Question {idx + 1}</h1>
-                <button onClick={() => { handleRemoveQuestion(idx) }} className='bg-red-500 px-5 py-2 rounded-xl text-white'><i class='bx bxs-trash-alt'></i></button>
+                <button  onClick={() => { handleRemoveQuestion(idx) }} className='bg-red-500 px-5 py-2 rounded-xl text-white'><i class='bx bxs-trash-alt'></i></button>
             </div>
             <div className='w-full mt-2 flex justify-between items-center'>
                 <div className='w-5/6 mr-2 '>

@@ -76,64 +76,64 @@ const ExamPage = () => {
     let updatedQuestions = [...questions];
     updatedQuestions[questionIndex].options.splice(optionIndex, 1);
     setQuestions(updatedQuestions);
-};
+  };
   return (
     <>
-      <div className="w-5/6 mx-auto border rounded-xl my-10 shadow-xl">
-      
-    <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
+        <div className="w-5/6 mx-auto border rounded-xl my-10 shadow-xl">
 
-    <div className="exam-container p-8 grow">
-          <div>
-          <div className="name-container">
-            <input className="text-2xl font-bold w-full"
-              type="text" placeholder="Exam Title"
-              value={title} onFocus={handleTitleFocus}
-              onBlur={handleTitleBlur} required
-              onChange={(e) => setTitle(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '8px',
-                borderBottom: '1px solid',
-                borderRadius: '4px',
-                ...(isTitleFocused && { borderColor: '#007bff', outline: 'none' }),
-              }}
-            />
-            <textarea className="text-sm my-5  w-full"
-              type="text" placeholder="Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '8px',
-                borderBottom: '1px solid',
-                borderRadius: '4px',
 
-              }}
-            ></textarea>
+
+          <div className="exam-container p-8 grow">
+            <div>
+              <div className="name-container">
+                <input className="text-2xl font-bold w-full"
+                  type="text" placeholder="Exam Title"
+                  value={title} onFocus={handleTitleFocus}
+                  onBlur={handleTitleBlur} required
+                  onChange={(e) => setTitle(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '8px',
+                    borderBottom: '1px solid',
+                    borderRadius: '4px',
+                    ...(isTitleFocused && { borderColor: '#007bff', outline: 'none' }),
+                  }}
+                />
+                <textarea className="text-sm my-5  w-full"
+                  type="text" placeholder="Description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '8px',
+                    borderBottom: '1px solid',
+                    borderRadius: '4px',
+
+                  }}
+                ></textarea>
+              </div>
+              <button onClick={handleAddQuestion} className="bg-green-700 text-white p-5 rounded-xl">Add Question</button>
+            </div>
+
+            <div className="questions-container w-[100%] mt-3">
+              {
+                questions.map((question, idx) => {
+                  return (
+                    <QuestionBase props={{ len:questions.length ,handleChangeOption, handleDeleteOption, handleChangeRadioOption, handleAddOption, question, idx, handleRemoveQuestion, handleChangeQuestion }} />
+                  );
+                })
+              }
+
+
+            </div>
           </div>
-          <button onClick={handleAddQuestion} className="bg-green-700 text-white p-5 rounded-xl">Add Question</button>
-          </div>
 
-          <div className="questions-container w-[100%] mt-3">
-            {
-              questions.map((question, idx) => {
-                return (
-                  <QuestionBase props={{ handleChangeOption, handleDeleteOption, handleChangeRadioOption, handleAddOption, question, idx, handleRemoveQuestion, handleChangeQuestion }} />
-                );
-              })
-            }
-
-
-          </div>
+          <button style={{ backgroundColor: questions.length > 0 ? "" : "#cccccc", cursor: questions.length > 0 ? "pointer" : "not-allowed" }}
+   type="submit" className="bg-green-600 px-5 py-2 font-bold text-white rounded shadow m-5" disabled={questions.length ===0} >Submit</button>
         </div>
 
-        <button type="submit " className="bg-green-500 px-5 py-2 font-bold text-white rounded shadow m-5">Submit</button>
-    </form>
-       
-      </div>
-
-
+      </form>
     </>
   );
 };
