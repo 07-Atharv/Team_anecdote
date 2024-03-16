@@ -9,7 +9,6 @@ import TeacherHome from "./screens/TeacherHome";
 import ExamPage from "./screens/ExamPage/ExamPage";
 import GetDetailsPage from "./screens/GetDetailsPage";
 
-
 const App = () => {
   return (
     <>

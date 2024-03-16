@@ -1,12 +1,12 @@
 'use client';
 
 import { FileInput, Label } from 'flowbite-react';
-import React from "react";
+import UploadWidget from './UploadWidget';
 
 const ImageAnswer = () => {
   return (
     <div>
-      <FileInput id="file-upload" className="mt-4" />
+      <UploadWidget></UploadWidget>
     </div>
   );
 };

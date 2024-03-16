@@ -75,10 +75,10 @@ const ExamPage = () => {
             select from one of the below question components to add to you exam
           </p>
 
-          <button className="font-bold py-4 rounded-xl shadow-md my-2">
+          {/* <button className="font-bold py-4 rounded-xl shadow-md my-2">
             {" "}
             Multiple Choice Question{" "}
-          </button>
+          </button> */}
           <button
             className="font-bold py-4 rounded-xl shadow-md my-2"
             onClick={() => {

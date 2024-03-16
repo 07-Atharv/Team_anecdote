@@ -9,8 +9,7 @@ import MCQAnswer from "../MCQAnswer";
 const TextQuestion = (props) => {
   const details = props.props;
 
-  const [selectedLabel, setSelectedLabel] =
-    React.useState("Select Answer Type");
+  const [selectedLabel, setSelectedLabel] = React.useState("Select Answer Type");
   const [editable, setEditable] = React.useState(false);
   const [questionState, setQuestionState] = React.useState(false);
   const [question, setQuestion] = React.useState(details.question);
@@ -26,14 +25,16 @@ const TextQuestion = (props) => {
         ) : (
           <button
             type="button"
-            onClick={() => setEditable(true)}
+            onClick={() => {
+              setEditable(true); 
+            }}
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
             <i class="bx bxs-edit-alt text-white"></i>
           </button>
         )}
       </div>
 
-      {questionState === true && editable ? (
+      {editable ? (
         <input
           type="text"
           value={question}
