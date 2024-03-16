@@ -1,8 +1,6 @@
-'use client';
+"use client";
 import React from "react";
-
-
-import { Dropdown } from 'flowbite-react';
+import { Dropdown } from "flowbite-react";
 const exams = [
   {
     name: "Exam1",
@@ -444,12 +442,11 @@ const TeacherHome = () => {
                   <p className="grow"> {exam.name} </p>
 
                   <Dropdown label="Dropdown button" dismissOnClick={false}>
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
-    </Dropdown>
-
+                    <Dropdown.Item>Dashboard</Dropdown.Item>
+                    <Dropdown.Item>Settings</Dropdown.Item>
+                    <Dropdown.Item>Earnings</Dropdown.Item>
+                    <Dropdown.Item>Sign out</Dropdown.Item>
+                  </Dropdown>
                 </div>
               </div>
             );
