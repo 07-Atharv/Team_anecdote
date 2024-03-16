@@ -1,7 +1,8 @@
+
 import "./App.css";
 import { GoogleLogin } from "@react-oauth/google";
-
-function App() {
+import React from "react";
+const App = () => {
   return (
     <GoogleLogin
       onSuccess={(credentialResponse) => {
@@ -12,6 +13,6 @@ function App() {
       }}
     />
   );
-}
+};
 
 export default App;
