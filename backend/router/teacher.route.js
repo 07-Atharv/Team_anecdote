@@ -14,7 +14,7 @@ router.get("/",bypass,(req,res)=>{
 router.post("/signup",bypass, async (req,res)=>{
     try {
         console.log(req.body)
-        const { name, profileurl,clientid,email, institution, verified } = req.body;
+        const { name, profileurl,email, institution, verified } = req.body;
     
         // Check if email is already registered
         const existingTeacher = await Teacher.findOne({ email });
@@ -23,7 +23,7 @@ router.post("/signup",bypass, async (req,res)=>{
         }
     
         // Create a new teacher
-        const teacher = new Teacher({ name, profileurl,clientid,email, institution, verified });
+        const teacher = new Teacher({ name, profileurl,email, institution, verified });
         await teacher.save();
     
         res.status(201).json({ success : 1,message: 'Teacher created successfully' });
