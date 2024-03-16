@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teacher API Documentation</title>
+</head>
+<body>
+  <h1>Teacher API Documentation</h1>
+  
+  <h2>Signup a Teacher</h2>
+  <ul>
+    <li><strong>URL:</strong> /api/teacher/signup</li>
+    <li><strong>Method:</strong> POST</li>
+    <li><strong>Description:</strong> Creates a new teacher account.</li>
+    <li><strong>Request Body:</strong>
+      <ul>
+        <li><code>name</code> (string, required): The name of the teacher.</li>
+        <li><code>profileurl</code> (string): Public Url of Profile</li>
+        <li><code>clientid</code> (string,required): Google Auth clientid</li>
+        <li><code>email</code> (string, required): The email address of the teacher.</li>
+       
+        <li><code>institution</code> (string, required): The institution the teacher is associated with.</li>
+        <li><code>verified</code> (Boolean, required): <code> true </code> if auth successfull</li>
+      </ul>
+    </li>
+    <li><strong>Responses:</strong>
+      <ul>
+        <li><code>201 Created</code>: Teacher account created successfully.</li>
+        <li><code>400 Bad Request</code>: Invalid request body or missing required fields.</li>
+        <li><code>500 Internal Server Error</code>: Server error.</li>
+      </ul>
+    </li>
+  </ul>
+</body>
+</html>

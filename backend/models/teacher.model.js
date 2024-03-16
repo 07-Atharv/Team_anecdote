@@ -6,6 +6,13 @@ const teacherSchema = new Schema({
     type: String,
     required: true
   },
+  profileurl:{
+    type: String,
+  },
+  clientid: {
+    type: String,
+    required: true
+  },
   email: {
     type: String,
     required: true,
