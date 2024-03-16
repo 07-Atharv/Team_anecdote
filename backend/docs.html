@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scorecraft API Documentation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 20px;
+      color: #333;
+    }
+    h1 {
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+    h2 {
+      color: #343a40;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #f8f9fa;
+      padding: 2px 4px;
+      border: 1px solid #ced4da;
+      border-radius: 3px;
+    }
+    .url {
+      color: #28a745;
+    }
+    .method {
+      color: #dc3545;
+    }
+    .description {
+      font-style: italic;
+    }
+    .response {
+      margin-top: 20px;
+    }
+    .response-code {
+      font-weight: bold;
+    }
+    /* Grid layout for endpoints */
+    .endpoints {
+      width: 90%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(calc(33% - 20px), 1fr));
+      gap: 20px;
+    }
+    .endpoint {
+      border: 1px solid #ccc;
+      border-radius:20px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Scorecraft API Documentation</h1>
+  
+  <div class="endpoints">
+    <div class="endpoint">
+      <h2>Signup a Teacher</h2>
+      <ul>
+        <li><strong>URL:</strong> <span class="url">/api/teacher/signup</span></li>
+        <li><strong>Method:</strong> <span class="method">POST</span></li>
+        <li><strong>Description:</strong> <span class="description">Creates a new teacher account.</span></li>
+        <li><strong>Request Body:</strong>
+          <ul>
+            <li><code>name</code> (string, required): The name of the teacher.</li>
+            <li><code>profileurl</code> (string): Public Url of Profile</li>
+            <li><code>clientid</code> (string,required): Google Auth clientid</li>
+            <li><code>email</code> (string, required): The email address of the teacher.</li>
+            <li><code>institution</code> (string, required): The institution the teacher is associated with.</li>
+            <li><code>verified</code> (Boolean, required): <code>true</code> if auth successful</li>
+          </ul>
+        </li>
+        <li class="response"><strong>Responses:</strong>
+          <ul>
+            <li><span class="response-code">201 Created</span>: Teacher account created successfully.</li>
+            <li><span class="response-code">400 Bad Request</span>: Invalid request body or missing required fields.</li>
+            <li><span class="response-code">500 Internal Server Error</span>: Server error.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="endpoint">
+      <h2>Signin a Teacher</h2>
+      <ul>
+        <li><strong>URL:</strong> <span class="url">/api/teacher/signin</span></li>
+        <li><strong>Method:</strong> <span class="method">POST</span></li>
+        <li><strong>Description:</strong> <span class="description">Logs in a teacher</span></li>
+        <li><strong>Request Body:</strong>
+          <ul>
+            <li><code>email</code> (string, required): The email address of the teacher when account created.</li>
+            
+          </ul>
+        </li>
+        <li class="response"><strong>Responses:</strong>
+            <ul>
+              <li><span class="response-code">200 OK</span>: Login successful. Returns a JWT token.
+                <ul>
+                  <li><code>success</code> (number): 1 if login is successful.</li>
+                  <li><code>message</code> (string): "Login Successful".</li>
+                  <li><code>token</code> (string): JWT token for authentication.</li>
+                </ul>
+              </li>
+              <li><span class="response-code">401 Unauthorized</span>: Invalid credentials or account not verified.
+                <ul>
+                  <li><code>success</code> (number): 0 if login is unsuccessful.</li>
+                  <li><code>message</code> (string): Error message detailing the reason for failure.</li>
+                </ul>
+              </li>
+              <li><span class="response-code">500 Internal Server Error</span>: Server error.</li>
+            </ul>
+          </li>
+      </ul>
+    </div>
+    
+  </div>
+</body>
+</html>
