@@ -3,7 +3,7 @@
 
 ScoreCraft is an advanced examination system that modernizes traditional assessment processes by introducing innovative features to improve the assessment experience. Our platform provides a complete solution to overcome the limitations of conventional methods.
 
-**Key Features**
+### Key Features
 Multiple Question Formats
 Our platform supports various question types, including text-based, image-based, and code-upload questions. This flexibility allows institutes to design comprehensive assessments tailored to their specific requirements.
 
