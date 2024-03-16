@@ -16,7 +16,6 @@ const matchPassword = async (plainPassword,hashedPassword) =>{
 }
 
 const generateToken = (data)=>{
-   
     return jwt.sign(data,JWT_SECRET)
 }
 
