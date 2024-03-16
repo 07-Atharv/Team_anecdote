@@ -96,7 +96,7 @@ const CodeQuestion = (props) => {
               onClick={() => {
                 setSelectedLabel("Text");
 
-                setAnswerComponent(<TextAnswer />);
+                setAnswerComponent(<TextAnswer disabled={true} />);
               }}>
               Text
             </Dropdown.Item>
