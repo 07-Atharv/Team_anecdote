@@ -1,4 +1,3 @@
-
 "use client";
 import React from "react";
 import { Dropdown } from "flowbite-react";
@@ -426,9 +425,7 @@ const exams = [
 ];
 
 const TeacherHome = () => {
-
   const navigate = useNavigate();
-
   return (
     <>
       <div className="main-container flex flex-col mt-[4%] ml-[4%]">
@@ -443,19 +440,6 @@ const TeacherHome = () => {
           {exams.map((exam) => {
             return (
               <div className="exam-container border-slate-400 shadow-md rounded-xl h-[300px] w-[400px] flex flex-row flex-wrap hover:scale-105 transition duration-500 flex flex-col">
-
-                <div className="thumbnail-container grow"></div>
-                <div className="name-container p-4 flex flex-row">
-                  <p className="grow"> {exam.name} </p>
-
-                  <Dropdown label="Dropdown button" dismissOnClick={false}>
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
-    </Dropdown>
-
-
                 <div
                   className="thumbnail-container grow cursor-pointer"
                   onClick={() => {
@@ -472,7 +456,6 @@ const TeacherHome = () => {
                     )}>
                     <Dropdown.Item>Delete</Dropdown.Item>
                   </Dropdown>
-
                 </div>
               </div>
             );
