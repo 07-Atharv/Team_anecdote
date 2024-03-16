@@ -4,17 +4,12 @@
 ScoreCraft is an advanced examination system that modernizes traditional assessment processes by introducing innovative features to improve the assessment experience. Our platform provides a complete solution to overcome the limitations of conventional methods.
 
 ### Key Features
-Multiple Question Formats :
-Our platform supports various question types, including text-based, image-based, and code-upload questions. This flexibility allows institutes to design comprehensive assessments tailored to their specific requirements.
+Versatile Question Formats: Our platform accommodates diverse question types, such as text-based, image-based, and code-upload questions, enabling institutions to create customized assessments to meet their specific needs.
 
-AI Proctoring :
-Leveraging advanced AI technology, our platform ensures the integrity of exams by monitoring student behavior, detecting anomalies, and flagging potential instances of cheating in real-time.
+Advanced Exam Monitoring: Utilizing cutting-edge AI technology, our platform maintains exam integrity by continuously monitoring student behavior, identifying irregularities, and promptly flagging potential instances of academic dishonesty.
 
-Instant Results :
-Students receive immediate feedback upon completing exams, streamlining the assessment process and enabling timely performance evaluation.
+Immediate Feedback: Upon completion of exams, students receive prompt feedback, streamlining the assessment process and facilitating timely performance evaluation.
 
-User-Friendly Interfaces :
-We provide intuitive dashboards for both institutes and students, simplifying exam scheduling, administration, and result dissemination.
+Intuitive User Interfaces: We offer user-friendly dashboards for institutions and students alike, simplifying exam management tasks such as scheduling, administration, and result dissemination.
 
-Secure Exam Access :
-Students receive personalized links to access exams during designated time slots, ensuring secure and controlled exam environments. Additionally, each student receives a unique passkey via email, serving as an additional layer of authentication to start the exam, enhancing exam security.
+Secure Exam Access: Students are provided with personalized links to access exams during designated time frames, ensuring a secure and controlled exam environment. Additionally, each student receives a unique passkey via email, adding an extra layer of authentication for exam commencement and enhancing overall exam security.
