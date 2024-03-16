@@ -1,4 +1,3 @@
-
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -13,16 +12,16 @@ const App = () => {
       <div>
         <Router onUpdate={() => window.scrollTo(0, 0)}>
           <Routes>
-            <Route path="/" exact element={<LandingPage/>} />
-            <Route path="/signup" exact element={<SignUp/>} />
-            <Route path="/signin" exact element={<SignIn/>} />
-            <Route path="/TeacherHome" exact element={<TeacherHome/>} />
+            <Route path="/" exact element={<LandingPage />} />
+            <Route path="/signup" exact element={<SignUp />} />
+            <Route path="/signin" exact element={<SignIn />} />
+            <Route path="/TeacherHome" exact element={<TeacherHome />} />
           </Routes>
         </Router>
       </div>
     </>
 
-/*
+    /*
 const App = () => {
   return (
     <GoogleLogin
