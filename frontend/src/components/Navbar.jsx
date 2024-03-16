@@ -1,10 +1,10 @@
 import React from "react";
-import { GoogleLogin } from "@react-oauth/google";
-import { useNavigate } from "react-router-dom";
+// import { GoogleLogin } from "@react-oauth/google";
+// import { useNavigate } from "react-router-dom";
 import logo from "../assets/image-r.png";
 
 function Navbar() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <div>
@@ -14,33 +14,36 @@ function Navbar() {
             href="https://flowbite.com/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <img src={logo} className="h-20 w-20" alt="Flowbite Logo"></img>
-            {/* <span className="self-center text-3xl font-semibold whitespace-nowrap ">
-              ScoreCraft
-            </span> */}
+            <img
+              src={logo}
+              className="h-20 w-20 mr-1"
+              alt="Flowbite Logo"
+            ></img>
+            <h1 className="text-2xl">ScoreCraft</h1>
           </a>
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            {/* <GoogleLogin
-              onSuccess={(credentialResponse) => {
-                console.log(credentialResponse);
-                navigate("/TeacherHome");
-              }}
-              onError={() => {
-                console.log("Login Failed");
-              }}
-            /> */}
-            <button
-              type="button"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-6"
-            >
-              Sign Up
-            </button>
-            <button
-              type="button"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center ml-2"
-            >
-              Sign In
-            </button>
+            <div className="flex items-center justify-center">
+              <a href="https://scorecraft.vercel.app/" className="ml-4 mr-14">
+                About Us
+              </a>
+              <a href="https://scorecraft.vercel.app/" className="ml-4 mr-10">
+                Features
+              </a>
+            </div>
+            <div className="flex items-center justify-center">
+              <button
+                type="button"
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+              >
+                Sign Up
+              </button>
+              <button
+                type="button"
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center ml-2"
+              >
+                Sign In
+              </button>
+            </div>
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
