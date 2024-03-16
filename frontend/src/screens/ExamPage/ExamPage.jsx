@@ -1,5 +1,6 @@
 import React from "react";
-import TextQuestion from "../../Components/textQuestion/textQuestion";
+import TextQuestion from "../../components/textQuestion/textQuestion";
+import CodeQuestion from "../../components/codeQuestion/CodeQuestion";
 
 // const questions = [
 //   {
@@ -96,7 +97,18 @@ const ExamPage = () => {
             {" "}
             Text Question{" "}
           </button>
-          <button className="font-bold py-4 rounded-xl shadow-md my-2">
+          <button onClick={() => {
+              setQuestions([
+                ...questions, 
+                {
+                    // text question
+                    id: "123",
+                    question: "Enter Your Question Here",
+                    type: "code",
+                    answer: "",
+                  }
+              ]);
+            }} className="font-bold py-4 rounded-xl shadow-md my-2">
             {" "}
             Code Question 🧑🏻‍💻
           </button>
@@ -134,6 +146,11 @@ const ExamPage = () => {
                 );
               } else if (question.type == "image") {
               } else if (question.type == "code") {
+                return (
+                  <>
+                    <CodeQuestion props={ind}/>
+                  </>
+                );
               } else if (question.type == "MCQ") {
               }
             })}
