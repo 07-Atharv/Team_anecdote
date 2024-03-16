@@ -1,1 +1,0 @@
-import McqQuestion from "./McqQuestion";

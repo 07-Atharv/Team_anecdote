@@ -2,9 +2,8 @@ import examSvg from "../../assets/Exams-bro.svg"
 import scoreCraftLogo from "../../assets/scorecraftlogo.png"
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
-
 import React from "react";
-import { BASEURL, GOOGLE_API_BASE } from "../../constants";
+import { BASEURL, GOOGLE_API_BASE, LOGGED_IN, TOKEN } from "../../constants";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
@@ -47,6 +46,9 @@ const navigate = useNavigate()
             alert( res.message );
           } else if( response.status == 200 ) {
             // navigating to the next page
+            localStorage.setItem( TOKEN, res.token );
+            localStorage.setItem( LOGGED_IN, true );
+
             navigate("/TeacherHome");
           }
         })

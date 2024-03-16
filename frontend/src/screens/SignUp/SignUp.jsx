@@ -28,7 +28,6 @@ const SignUp = () => {
             console.log(userDetails)
 
             navigate("/getDetails", { state: { details: userDetails } });
-
         },
 
         onError: () => {
