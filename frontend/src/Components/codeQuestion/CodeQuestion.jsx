@@ -1,28 +1,46 @@
-import React, { useEffect, useRef, useState } from 'react'
-import Editor, { DiffEditor, useMonaco, loader } from '@monaco-editor/react';
-import LanguageSelector from '../LanuageSelector/LanguageSelector';
-import {CODE_SNIPPETS, LANGUAGES_SUPPORTED } from '../../constants';
+import React, { useEffect, useRef, useState } from "react";
+import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
+import LanguageSelector from "../LanuageSelector/LanguageSelector";
+import { Dropdown } from "flowbite-react";
+import TextAnswer from "../textAnswer/";
+import ImageAnswer from "../ImageAnswer/";
+import MCQAnswer from "../MCQAnswer/";
+import CodeAnswer from "../codeAnswer";
+import { CODE_SNIPPETS, LANGUAGES_SUPPORTED } from "../../constants";
 
 const languages = Object.entries(LANGUAGES_SUPPORTED);
 
 const CodeQuestion = (props) => {
+  const [language, setLanguage] = useState("javascript");
+  const [question, setQuestion] = useState("Enter Your Question");
+  const [selectedLabel, setSelectedLabel] = React.useState("Select Answer Type");
+  const [editable, setEditable] = React.useState(false);
+  const [questionState, setQuestionState] = React.useState(false);
+  const [answerComponent, setAnswerComponent] = React.useState();
 
+<<<<<<< HEAD
   const data = props.props
   const [language,setLanguage] = useState("javascript")
   const [question,setQuestion] = useState("")
   const editorRef = useRef(null)
   
   const onSelect = (lang)=>{
-    setLanguage(lang);
-    setCodeQuestion(CODE_SNIPPETS[lang])
-  }
-  const onMount = (editor) =>{
-    editorRef.current = editor
-    editor.focus()
-  }
+=======
+  const editorRef = useRef;
 
-  const [codeQuestion,setCodeQuestion] =  useState("")
+  const onSelect = (lang) => {
+>>>>>>> ddc28ace1b3b99d86ae7c422f1857e11287242d7
+    setLanguage(lang);
+    setCodeQuestion(CODE_SNIPPETS[lang]);
+  };
+  const onMount = (editor) => {
+    editorRef.current = editor;
+    editor.focus();
+  };
+  const [codeQuestion, setCodeQuestion] = useState("");
+
   return (
+<<<<<<< HEAD
     <div >
        {/* <input
           type="text" placeholder='Enter Question'
@@ -36,5 +54,142 @@ const CodeQuestion = (props) => {
     </div>
   )
 }
+=======
+    <div className="shadow-md rounded-xl w-full h-fit p-8">
+      <div className="flex flex-row">
+        <h1 className="font-bold text-2xl grow">Question {props.index}</h1>
 
-export default CodeQuestion
+        {editable ? (
+          <div className=""> </div>
+        ) : (
+          <button
+            type="button"
+            onClick={() => {
+              setEditable(true);
+            }}
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            <i class="bx bxs-edit-alt text-white"></i>
+          </button>
+        )}
+      </div>
+
+      {editable ? (
+        <input
+          type="text"
+          value={question}
+          className="mt-4"
+          onChange={(e) => setQuestion(e.target.value)}
+          onBlur={() => setQuestionState(false)}
+        />
+      ) : (
+        <p className="pt-4 text-xl" onClick={() => setQuestionState(true)}>
+          {question}
+        </p>
+      )}
+>>>>>>> ddc28ace1b3b99d86ae7c422f1857e11287242d7
+
+      <div className="mt-6">
+        <LanguageSelector props={{ language, onSelect }} />
+      </div>
+      <Editor
+        theme="vs-dark"
+        height="40vh"
+        language={language}
+        onMount={onMount}
+        defaultLanguage="javascript"
+        defaultValue={CODE_SNIPPETS["javascript"]}
+        value={codeQuestion}
+        onChange={(code) => {
+          setCodeQuestion(code);
+        }}
+      />
+
+      <div className="flex flex-row justify-start gap-x-12 w-full mt-8 mx-auto">
+        <h1 className="font-bold text-lg">Answer Type</h1>
+
+        {editable ? (
+          <Dropdown label={selectedLabel} inline>
+            <Dropdown.Item
+              onClick={() => {
+                setSelectedLabel("Code");
+
+                setAnswerComponent( <CodeAnswer/>)
+              }}>
+              Code
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                setSelectedLabel("Text");
+
+                setAnswerComponent(<TextAnswer />);
+              }}>
+              Text
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                setSelectedLabel("Image");
+
+                setAnswerComponent(<ImageAnswer />);
+              }}>
+              Image
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                setSelectedLabel("Multiple Choice Questions (MCQs)");
+
+                setAnswerComponent(<MCQAnswer />);
+              }}>
+              Multiple Choice Questions (MCQs)
+            </Dropdown.Item>
+          </Dropdown>
+        ) : (
+          <p> {selectedLabel} </p>
+        )}
+        {/* <button
+          type="button"
+          onClick={() => setEditable(false)}
+          class="text-white bg-blue-700 mt-4 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+          Text Based Answer
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setEditable(false)}
+          class="text-white bg-blue-700 mt-4 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+          MCQ Based Answerer
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setEditable(false)}
+          class="text-white bg-blue-700 mt-4 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+          Image Based Answer
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setEditable(false)}
+          class="text-white bg-blue-700 mt-4 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+          Code Based Answer 
+        </button> */}
+      </div>
+
+      {answerComponent}
+
+      {!editable ? (
+        <div className=" "></div>
+      ) : (
+        <div className="button-container w-full flex flex-row items-end justify-end">
+          <button
+            type="button"
+            onClick={() => setEditable(false)}
+            className="text-white  px-8 bg-blue-700 mt-4 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            Save
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default CodeQuestion;

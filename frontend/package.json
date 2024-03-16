@@ -16,6 +16,7 @@
     "cloudinary": "^2.0.3",
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.7.3",
+    "openai": "^4.29.1",
     "jwt-decode": "^4.0.0",
     "node-polyfill-webpack-plugin": "^3.0.0",
     "package": "^1.0.1",
