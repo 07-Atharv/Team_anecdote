@@ -5,6 +5,8 @@ import LandingPage from "./screens/LandingPage";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
 import TeacherHome from "./screens/TeacherHome";
+
+import ExamPage from "./screens/ExamPage/ExamPage";
 import GetDetailsPage from "./screens/GetDetailsPage";
 
 const App = () => {

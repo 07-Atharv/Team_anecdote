@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { BASEURL, TOKEN } from "../../constants";
+import { BASEURL, LOGGED_IN, TOKEN } from "../../constants";
 
 const GetDetailsPage = () => {
   const [institute, setInstitute] = React.useState("");
@@ -60,6 +60,7 @@ const GetDetailsPage = () => {
                     console.log(res.body);
                   } else {
                     localStorage.setItem(TOKEN, res.token);
+                    localStorage.setItem(LOGGED_IN, true);
 
                     // navigating to the next page
                     navigate("/TeacherHome");

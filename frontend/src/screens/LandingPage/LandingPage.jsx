@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/NavBar/Navbar"
 import landingImage from "../../assets/land1.png";
 import { useNavigate } from "react-router-dom";
 import ai from "../../assets/ai.svg";
-import authentication from "../../assets/authentication.svg";
+import authentication from '../../assets/authentication.svg';
 import check from "../../assets/check.svg";
 import instant from "../../assets/instant.svg";
 import secure from "../../assets/secure.svg";
@@ -42,6 +42,7 @@ const LandingPage = () => {
         <div className="w-1/2 flex justify-start  items-center">
           <img src={landingImage} alt="Langing illustration"></img>
         </div>
+
       </div>
       <h1 className="text-4xl font-semibold	text-center mt-60">
         What’s New Here ?
@@ -111,6 +112,7 @@ const LandingPage = () => {
             for secure login
           </p>
         </div>
+
       </div>
       <br />
       <br />
@@ -198,7 +200,6 @@ const LandingPage = () => {
                   ScoreCraft™
                 </a>
                 . All Rights Reserved.
-             
             </div>
           </div>
         </div>
