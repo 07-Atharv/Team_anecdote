@@ -1,162 +1,139 @@
-import React from "react";
+import React, { useState } from "react";
 import TextQuestion from "../../components/textQuestion/textQuestion";
 import CodeQuestion from "../../components/codeQuestion/CodeQuestion";
+import { QUE_TYPE, ANS_TYPE, OPTION_TYPE } from "../../constants";
+import QuestionBase from "../../components/baseQuestion/QuestionBase";
 
-// const questions = [
-//   {
-//     // text question
-//     id: "123",
-//     question: "What is our Nearest Star called",
-//     type: "text",
-//     answer: "The Sun",
-//   },
-//   {
-//     // MCQ question
-//     id: "124",
-//     question: "What is Computer Engineering",
-//     type: "MCQ",
-//     options: [
-//       "Just an option",
-//       "An overrated Course",
-//       "Management Qouta se Admission",
-//       "Main nahi bataunga",
-//     ],
-//     answer: "Main nahi bataunga",
-//   },
-//   {
-//     // image Question with text answer
-//     id: "125",
-//     type: "image",
-//     imageURL:
-//       "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Fdewwool.com%2Fwp-content%2Fuploads%2F2020%2F11%2Fdirection-of-centrifugal-force-1.jpg%3Fw%3D1195%26ssl%3D1&f=1&nofb=1&ipt=07ece85c4f1a5ad2e2d13fb5186fb39f23dfc8f07757320af7564973f580f5e4&ipo=images",
-//     relatedText: "Which scitific phenomenon does above image depicts",
-//     answer: "",
-//   },
-//   {
-//     // Code Question with text answer
-//     id: "125",
-//     type: "code",
-//     text: "complete the below code",
-//     code: `
-//         class Animal:
-//             def __init__(self, name, age):
-//                 self.name = name
-//                 self.age = age
-            
-//             def sound(self):
-//                 pass
-        
-//         class Dog:  # Incomplete line
-//             def __init__(self, name, age, breed):
-//                 super().__init__(name, age)
-//                 self.breed = breed
-            
-//             def sound(self):
-//                 # Add code here
-//                 pass
-        
-//         # Incomplete code
-//         `,
-//     fileurl: "",
-//   },
-// ];
 
 const ExamPage = () => {
-  const [name, setName] = React.useState("Exam-0");
-  const [nameState, setNameState] = React.useState(false);
-  const [questions, setQuestions] = React.useState([]);
 
+  const [title, setTitle] = useState('Exam0');
+  const [description, setDescription] = useState('');
+  const [questions, setQuestions] = useState([{ qtype: QUE_TYPE.QUE_TYPE_TEXT, qtext: '', qimg: '', qcode: '', anstype: ANS_TYPE.ANS_TYPE_TEXT, options: [{ otype: OPTION_TYPE.TYPE_TEXT, text: '', isCorrect: false }] }]);
+
+  const handleAddQuestion = () => {
+    setQuestions([...questions, { qtype: QUE_TYPE.QUE_TYPE_TEXT, qtext: '', qimg: '', qcode: '', anstype: ANS_TYPE.ANS_TYPE_TEXT, options: [{ otype: OPTION_TYPE.TYPE_TEXT, text: '', isCorrect: false }] }]);
+  };
+
+  const handleRemoveQuestion = (index) => {
+    const updatedQuestions = [...questions];
+    updatedQuestions.splice(index, 1);
+    setQuestions(updatedQuestions);
+  };
+
+  const handleChangeQuestion = (index, field, value) => {
+    const updatedQuestions = [...questions];
+    updatedQuestions[index][field] = value;
+    if (field === 'anstype') {
+      updatedQuestions[index].options = [{ otype: OPTION_TYPE.TYPE_TEXT, text: '', isCorrect: false }];
+    }
+    setQuestions(updatedQuestions);
+    console.log(updatedQuestions[index])
+  };
+
+  const handleAddOption = (index) => {
+    const updatedQuestions = [...questions];
+    updatedQuestions[index]['options'].push({ otype: OPTION_TYPE.TYPE_TEXT, text: '', isCorrect: false })
+    setQuestions(updatedQuestions)
+
+  }
+
+  const handleChangeOption = (questionIndex, optionIndex, field, value) => {
+
+    let updateQuestions = [...questions]
+    updateQuestions[questionIndex].options[optionIndex][field] = value;
+    setQuestions(updateQuestions)
+    console.log(questions[questionIndex])
+
+  };
+
+  const handleChangeRadioOption = (questionIndex, optionIndex, field, value) => {
+    let updatedQuestions = [...questions];
+    updatedQuestions[questionIndex].options.forEach((option, index) => {
+      option[field] = index === optionIndex ? value : false;
+    });
+    setQuestions(updatedQuestions);
+    console.log(questions[questionIndex].options)
+  };
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add your logic to submit the form data
+    console.log({ title, description, questions });
+  };
+
+  const [isTitleFocused, setTitleFocused] = useState(false)
+  const handleTitleFocus = () => {
+    setTitleFocused(true);
+  };
+
+  const handleTitleBlur = () => {
+    setTitleFocused(false);
+  };
+
+  const handleDeleteOption = (questionIndex, optionIndex) => {
+    let updatedQuestions = [...questions];
+    updatedQuestions[questionIndex].options.splice(optionIndex, 1);
+    setQuestions(updatedQuestions);
+  };
   return (
     <>
-      <div className="main-container flex flex-row w-[100vw]] h-[100vh]">
-        <div className="flex flex-col sidebar w-[20%] shadow-md p-8">
-          <h1 className="font-bold text-2xl mb-4"> Questions </h1>
+      <form onSubmit={handleSubmit}>
+        <div className="w-5/6 mx-auto border rounded-xl my-10 shadow-xl">
 
-          <p className="mb-4">
-            select from one of the below question components to add to you exam
-          </p>
 
-          {/* <button className="font-bold py-4 rounded-xl shadow-md my-2">
-            {" "}
-            Multiple Choice Question{" "}
-          </button> */}
-          <button
-            className="font-bold py-4 rounded-xl shadow-md my-2"
-            onClick={() => {
-              setQuestions([
-                ...questions, 
-                {
-                    // text question
-                    id: "123",
-                    question: "Enter Your Question Here",
-                    type: "text",
-                    answer: "",
-                  }
-              ]);
-            }}>
-            {" "}
-            Text Question{" "}
-          </button>
-          <button onClick={() => {
-              setQuestions([
-                ...questions, 
-                {
-                    // text question
-                    id: "123",
-                    question: "Enter Your Question Here",
-                    type: "code",
-                    answer: "",
-                  }
-              ]);
-            }} className="font-bold py-4 rounded-xl shadow-md my-2">
-            {" "}
-            Code Question 🧑🏻‍💻
-          </button>
-          <button className="font-bold py-4 rounded-xl shadow-md my-2">
-            {" "}
-            Image Based Question 🖼️{" "}
-          </button>
-        </div>
-        <div className="exam-container p-8 grow">
-          <div className="name-container">
-            {nameState === true ? (
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                onBlur={() => setNameState(false)}
-              />
-            ) : (
-              <p
-                className="font-bold text-3xl"
-                onClick={() => setNameState(true)}>
-                {name}
-              </p>
-            )}
-          </div>
 
-          <div className="questions-container w-[100%] mt-12">
-            {questions.map((question, ind) => {
-                console.log( question );
-              if (question.type == "text") {
-                return (
-                  <>
-                    <TextQuestion props={question} index={ind+1}></TextQuestion>
-                  </>
-                );
-              } else if (question.type == "image") {
-              } else if (question.type == "code") {
-                return (
-                  <>
-                    <CodeQuestion props={question} index={ind+1}/>
-                  </>
-                );
-              } else if (question.type == "MCQ") {
+          <div className="exam-container p-8 grow">
+            <div>
+              <div className="name-container">
+                <input className="text-2xl font-bold w-full"
+                  type="text" placeholder="Exam Title"
+                  value={title} onFocus={handleTitleFocus}
+                  onBlur={handleTitleBlur} required
+                  onChange={(e) => setTitle(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '8px',
+                    borderBottom: '1px solid',
+                    borderRadius: '4px',
+                    ...(isTitleFocused && { borderColor: '#007bff', outline: 'none' }),
+                  }}
+                />
+                <textarea className="text-sm my-5  w-full"
+                  type="text" placeholder="Description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '8px',
+                    borderBottom: '1px solid',
+                    borderRadius: '4px',
+
+                  }}
+                ></textarea>
+              </div>
+              <button onClick={handleAddQuestion} className="bg-green-700 text-white p-5 rounded-xl">Add Question</button>
+            </div>
+
+            <div className="questions-container w-[100%] mt-3">
+              {
+                questions.map((question, idx) => {
+                  return (
+                    <QuestionBase props={{ len:questions.length ,handleChangeOption, handleDeleteOption, handleChangeRadioOption, handleAddOption, question, idx, handleRemoveQuestion, handleChangeQuestion }} />
+                  );
+                })
               }
-            })}
+
+
+            </div>
           </div>
+
+          <button style={{ backgroundColor: questions.length > 0 ? "" : "#cccccc", cursor: questions.length > 0 ? "pointer" : "not-allowed" }}
+   type="submit" className="bg-green-600 px-5 py-2 font-bold text-white rounded shadow m-5" disabled={questions.length ===0} >Submit</button>
         </div>
-      </div>
+
+      </form>
     </>
   );
 };
