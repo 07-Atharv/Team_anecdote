@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { Dropdown } from "flowbite-react";
+import { useNavigate } from 'react-router-dom';
+
 const exams = [
   {
     name: "Exam1",
@@ -423,6 +425,7 @@ const exams = [
 ];
 
 const TeacherHome = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="main-container flex flex-col mt-[4%] ml-[4%]">
@@ -436,12 +439,21 @@ const TeacherHome = () => {
         <div className="flex flex-wrap flex-row gap-8">
           {exams.map((exam) => {
             return (
-              <div className="exam-container border-slate-400 shadow-md rounded-xl h-[300px] w-[400px] flex flex-row flex-wrap hover:scale-105 transition duration-500 flex flex-col">
+              <div
+                onClick={() => {
+                    navigate("/examPage", { state: { examid : "abcd"} } );
+                }}
+                className="exam-container border-slate-400 shadow-md rounded-xl h-[300px] w-[400px] flex flex-row flex-wrap hover:scale-105 transition duration-500 flex flex-col">
                 <div className="thumbnail-container grow"></div>
                 <div className="name-container p-4 flex flex-row">
-                  <p className="grow"> {exam.name} </p>
+                  <p className="grow font-bold"> {exam.name} </p>
 
-                  <Dropdown label="Dropdown button" dismissOnClick={false}>
+                  <Dropdown
+                    label=""
+                    dismissOnClick={false}
+                    renderTrigger={() => (
+                      <i class="bx bx-dots-horizontal-rounded cursor-pointer"></i>
+                    )}>
                     <Dropdown.Item>Dashboard</Dropdown.Item>
                     <Dropdown.Item>Settings</Dropdown.Item>
                     <Dropdown.Item>Earnings</Dropdown.Item>

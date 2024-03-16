@@ -6,6 +6,7 @@ import LandingPage from "./screens/LandingPage";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
 import TeacherHome from "./screens/TeacherHome";
+import ExamPage from "./screens/ExamPage/ExamPage";
 import GetDetailsPage from "./screens/GetDetailsPage";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="/signin" exact element={<SignIn/>} />
             <Route path="/TeacherHome" exact element={<TeacherHome/>} />
             <Route path="/getDetails" exact element={<GetDetailsPage/>} />
+            <Route path="/examPage" exact element={<ExamPage/>} />
           </Routes>
         </Router>
       </div>
