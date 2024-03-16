@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./screens/LandingPage";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
-
+import TeacherHome from "./screens/TeacherHome";
 
 const App = () => {
   return (
@@ -14,6 +14,7 @@ const App = () => {
             <Route path="/" exact element={<LandingPage/>} />
             <Route path="/signup" exact element={<SignUp/>} />
             <Route path="/signin" exact element={<SignIn/>} />
+            <Route path="/TeacherHome" exact element={<TeacherHome/>} />
           </Routes>
         </Router>
       </div>

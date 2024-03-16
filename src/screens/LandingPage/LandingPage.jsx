@@ -1,13 +1,13 @@
 import React from "react";
-import Spline from "@splinetool/react-spline";
+import { useNavigate } from "react-router-dom";
 
-const LandingPage = () => {
+const LandingPage = () => {  
+  const navigate = useNavigate();
+
   return ( 
     <>
-      <div className="h-[200vh]"></div>
-      <div>
-        <Spline scene="https://prod.spline.design/OPBCmAREfay38Tvx/scene.splinecode" />
-      </div>
+    <button onClick={() => {navigate("/TeacherHome")}}> Sign in </button>
+      <h1 className="font-bold text-3xl"> This will be landing page </h1>
     </>
   );
 };
