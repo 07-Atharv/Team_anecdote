@@ -40,7 +40,7 @@ router.post("/signin",bypass, async (req,res)=>{
         // Check if teacher exists
         const teacher = await Teacher.findOne({ email });
         if (!teacher) {
-          return res.status(401).json({success : 0, message: 'Invalid credentials' });
+          return res.status(401).json({success : 0, message: 'User not registered' });
         }
     
         // Check if teacher is verified
@@ -48,7 +48,7 @@ router.post("/signin",bypass, async (req,res)=>{
           return res.status(401).json({success : 0, message: 'Account not verified' });
         }
     
-        res.status(200).json({ success : 1,message: 'Login Successfull', token : generateToken({id:teacher._id}) });
+        res.status(200).json({ success : 1,message: 'Login Successfull', token : generateToken({id:teacher._id}),data :teacher });
       } catch (error) {
         console.error(error);
         res.status(500).json({success : 0, message: 'Server Error' });
