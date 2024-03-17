@@ -115,7 +115,9 @@ const dummyData = [
 const StudentTest = () => {
   const { state } = useLocation();
   const [index, setIndex] = React.useState(0);
-  const questions = dummyData[0].questions;
+  // const questions = dummyData[0].questions;
+  const questions = state.questions;
+  console.log( questions );
 
   return (
     <>
@@ -150,7 +152,18 @@ const StudentTest = () => {
                 Previous
               </button>
             )}
-            <button
+            { index == questions.length-1 ? <button
+              type="button"
+              onClick={() => {
+                if (index + 1 == questions.length) {
+                } else {
+                  setIndex(index + 1);
+                  console.log(index);
+                }
+              }}
+              class="w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none dark:focus:ring-blue-800">
+              Submit
+            </button> : <button
               type="button"
               onClick={() => {
                 if (index + 1 == questions.length) {
@@ -161,7 +174,7 @@ const StudentTest = () => {
               }}
               class="w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none dark:focus:ring-blue-800">
               Next
-            </button>
+            </button> } 
           </div>
         </div>
       </div>
