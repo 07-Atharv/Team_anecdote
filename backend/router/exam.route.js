@@ -1,7 +1,7 @@
 
 const express = require("express");
 const router = express.Router();
-\
+
 const {bypass,verifyTeacher} = require("../middleware/api.middleware");
 router.get("/",bypass,(req,res)=>{
     res.send('Hello Exam')
