@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { QUE_TYPE, ANS_TYPE, OPTION_TYPE } from "../../constants";
+import { QUE_TYPE, ANS_TYPE, OPTION_TYPE, BASEURL, TOKEN } from "../../constants";
 import QuestionBase from "../../Components/baseQuestion/QuestionBase";
 
 
@@ -55,10 +55,22 @@ const ExamPage = () => {
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Add your logic to submit the form data
-    console.log({ title, description, questions });
+    // console.log({ title, description, questions });
+
+    console.log("Token: ",localStorage.getItem(TOKEN))
+    let response  = await fetch(BASEURL+"/api/exam/create",{
+      method :"POST",
+      headers : {
+        'Content-Type': 'application/json',
+        'token' : localStorage.getItem(TOKEN)
+      },
+      body:JSON.stringify({ title, description, questions })
+    })
+    response = await response.json()
+    console.log(response)
   };
 
   const [isTitleFocused, setTitleFocused] = useState(false)
