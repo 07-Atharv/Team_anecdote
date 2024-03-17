@@ -5,10 +5,10 @@ import LandingPage from "./screens/LandingPage";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
 import TeacherHome from "./screens/TeacherHome";
-
+import TakeTest from "./components/takeTest/index";
 import ExamPage from "./screens/ExamPage/ExamPage";
 import GetDetailsPage from "./screens/GetDetailsPage";
-import TakeTest from "./components/takeTest";
+
 import StudentTest from "./screens/StudentTest";
 
 const App = () => {
