@@ -7,9 +7,9 @@ import SignUp from "./screens/SignUp";
 import TeacherHome from "./screens/TeacherHome";
 import ExamPage from "./screens/ExamPage/ExamPage";
 import GetDetailsPage from "./screens/GetDetailsPage";
-
+import TakeTest from "./Components/takeTest/TakeTest";
 import StudentTest from "./screens/StudentTest";
-import TakeTest from "./components/takeTest/TakeTest";
+
 
 const App = () => {
   return (

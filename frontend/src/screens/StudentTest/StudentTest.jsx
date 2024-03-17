@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import StudentQuestion from "../../components/StudentQuestion/StudentQuestion";
+import StudentQuestion from "../../Components/StudentQuestion/StudentQuestion";
 
 const dummyData = [
   {

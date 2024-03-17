@@ -2,7 +2,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { Dropdown } from "flowbite-react";
-import LoggedNav from "../../components/LoggedNAv/LoggedNav";
+import LoggedNav from "../../Components/LoggedNAv/LoggedNav";
 
 const exams = [
   {
