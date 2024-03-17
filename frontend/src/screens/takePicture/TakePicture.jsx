@@ -1,23 +1,22 @@
-import React, { useRef,useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Webcam from "react-webcam";
 
 const OG_FACE = "examinee";
 
 function App() {
-
   window.oncontextmenu = () => {
     // alert('No way!!!');
     return false;
-};
+  };
 
   const handleCopy = (e) => {
     e.preventDefault();
-    alert('Copying is not allowed');
+    alert("Copying is not allowed");
   };
 
   const handlePaste = (e) => {
     e.preventDefault();
-    alert('Pasting is not allowed');
+    alert("Pasting is not allowed");
   };
 
   const webcamRef = useRef(null);
@@ -25,46 +24,44 @@ function App() {
   const [devTools, setDevTools] = useState(null);
   const [msg, setMsg] = useState("");
 
-  const checkDevTools = () =>{
+  const checkDevTools = () => {
     if (devTools.isOpen) {
-      alert('Warning: Developer tools are open!');
-      setDevTools("Dev Tools Open")
+      alert("Warning: Developer tools are open!");
+      setDevTools("Dev Tools Open");
       // You can add your logic here, such as alerting the proctor
-    }else{
-      setDevTools("Dev Tools not Open")
+    } else {
+      setDevTools("Dev Tools not Open");
     }
-  }
+  };
 
   const checkTabVisibility = () => {
     if (document.hidden) {
       // User has changed or exited the current tab
-      console.log('User changed or exited tab');
-      setMsg('User changed or exited tab')
+      console.log("User changed or exited tab");
+      setMsg("User changed or exited tab");
       // You can add your logic here, such as alerting the proctor
     } else if (!document.hasFocus()) {
       // Another software is opened
-      console.log('Another software is opened');
-      setMsg("Another software is opened")
+      console.log("Another software is opened");
+      setMsg("Another software is opened");
       // You can add your logic here, such as alerting the proctor
-    }
-    else if (!window.screenTop && !window.screenY ) {
+    } else if (!window.screenTop && !window.screenY) {
       // User has switched to fullscreen mode
-      console.log('User is not fullscreen mode');
-     setMsg('User is not fullscreen mode');
-      
+      console.log("User is not fullscreen mode");
+      setMsg("User is not fullscreen mode");
+
       // You can add your logic here, such as alerting the proctor
-    }
-    else {
-      console.log('User is active on the exam tab');
-      setMsg('User is active on the exam tab');
+    } else {
+      console.log("User is active on the exam tab");
+      setMsg("User is active on the exam tab");
     }
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
       captureAndSendImage();
-    // checkDevTools();
-      checkTabVisibility()
+      // checkDevTools();
+      checkTabVisibility();
     }, 3000); // Send image every 1 second
 
     return () => clearInterval(interval); // Cleanup interval on unmount
@@ -121,11 +118,10 @@ function App() {
   return (
     <div onCopy={handleCopy} onPaste={handlePaste}>
       <Webcam className="" audio={false} ref={webcamRef} />
-      {/* <button onClick={captureStartFace}>Capture Start Face</button>
-      <p>{msg}</p> */}
-      {/* <button onClick={captureAndSendImage}>Capture and Send Image</button> */}
-      {/* {startFace && <img src={startFace} alt="start-face" />} */}
-      {/* <input/> */}
+      <button onClick={captureStartFace}>Capture Start Face</button>
+
+      <button onClick={captureAndSendImage}>Capture and Send Image</button>
+      {startFace && <img src={startFace} alt="start-face" />}
     </div>
   );
 }

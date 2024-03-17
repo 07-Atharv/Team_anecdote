@@ -9,6 +9,7 @@ import ExamPage from "./screens/ExamPage/ExamPage";
 import GetDetailsPage from "./screens/GetDetailsPage";
 import TakeTest from "./Components/takeTest/TakeTest";
 import StudentTest from "./screens/StudentTest";
+import TakePicture from "./screens/takePicture";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/takeTest" element={<TakeTest />} />
             <Route path="/studentTest" element={<StudentTest />} />
             <Route path="/examPage" element={<ExamPage />} />
+            <Route path="/webcamProctor" element={<TakePicture />} />
           </Routes>
         </Router>
       </div>
