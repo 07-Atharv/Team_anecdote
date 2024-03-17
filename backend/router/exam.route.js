@@ -6,32 +6,87 @@ router.get("/", bypass, (req, res) => {
   res.send("Hello Exam");
 });
 
+// router.post("/create", verifyTeacher, async (req, res) => {
+//   try {
+//     const { examid, title, description, questions } = req.body;
+    
+//     // Create a new exam
+//     console.log(req.teacher)
+//     const exam = new Exam({
+//       title,
+//       description,
+//       creator: req.teacher._id,
+//       questions,
+//     });
+
+//     // Save the exam to the database
+//     await exam.save();
+
+//     res
+//       .status(201)
+//       .json({ success: 1, message: "Exam created successfully", exam });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ success: 0, message: "Internal Server Error" });
+//   }
+// });
+
+
 router.post("/create", verifyTeacher, async (req, res) => {
   try {
-    const { title, description, questions } = req.body;
-    
-    // Create a new exam
-    console.log(req.teacher)
-    const exam = new Exam({
-      title,
-      description,
-      creator: req.teacher._id,
-      questions,
-    });
+    const { examid, title, description, questions } = req.body;
 
-    // Save the exam to the database
-    await exam.save();
+    if (examid && examid!='') {
+      // Update existing exam
+      const updatedExam = await Exam.findByIdAndUpdate(examid, {
+        title,
+        description,
+        questions,
+      });
+      
+      if (!updatedExam) {
+        return res.status(404).json({ success: 0, message: "Exam not found" });
+      }
 
-    res
-      .status(201)
-      .json({ success: 1, message: "Exam created successfully", exam });
+      return res.status(200).json({ success: 1, message: "Exam updated successfully", exam: updatedExam });
+    } else {
+      // Create a new exam
+      const exam = new Exam({
+        title,
+        description,
+        creator: req.teacher._id,
+        questions,
+      });
+
+      // Save the exam to the database
+      await exam.save();
+
+      return res.status(201).json({ success: 1, message: "Exam created successfully", exam });
+    }
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: 0, message: "Internal Server Error" });
   }
 });
 
+
 router.get("/getone", bypass, async (req, res) => {
+  try {
+    const { id } = req.body;
+    
+
+    const exam  = await Exam.findOne({_id:id})
+
+    res
+      .status(201)
+      .json({ success: 1, message: "Exam retrieved", exam });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: 0, message: "Internal Server Error" });
+  }
+});
+
+router.post("/getone", bypass, async (req, res) => {
   try {
     const { id } = req.body;
     

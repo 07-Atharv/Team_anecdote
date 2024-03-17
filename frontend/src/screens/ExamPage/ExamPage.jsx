@@ -1,14 +1,47 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { QUE_TYPE, ANS_TYPE, OPTION_TYPE, BASEURL, TOKEN } from "../../constants";
-import QuestionBase from "../../components/baseQuestion/QuestionBase";
+import QuestionBase from "../../Components/baseQuestion/QuestionBase";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import LoggedNav from "../../Components/LoggedNAv/LoggedNav";
 
-const initQuestions = [{ qtype: QUE_TYPE.QUE_TYPE_TEXT, qtext: '', qimg: '', qcode: '', anstype: ANS_TYPE.ANS_TYPE_TEXT, options: [{ otype: OPTION_TYPE.TYPE_TEXT, text: '', isCorrect: false }] }]  
+const initQuestions = [{ qtype: QUE_TYPE.QUE_TYPE_TEXT, qtext: '', qimg: '', qcode: '', anstype: ANS_TYPE.ANS_TYPE_TEXT, options: [{ otype: OPTION_TYPE.TYPE_TEXT, text: '', isCorrect: false }] }]
 
 const ExamPage = () => {
+  const navigate = useNavigate()
+  const location = useLocation();
+  let examid = "";
+  try {
+    examid = location.state['examid'];
+  } catch (error) {
 
+  }
   const [title, setTitle] = useState('Exam0');
   const [description, setDescription] = useState('');
   const [questions, setQuestions] = useState(initQuestions);
+
+  useEffect(() => {
+    if (examid) {
+      getExam();
+    }
+  }, [examid]);
+
+  const getExam = async () => {
+    let res = await fetch(BASEURL + "/api/exam/getone", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: examid })
+    })
+
+    res = await res.json()
+
+    console.log(res)
+
+    setTitle(res.exam.title)
+    setDescription(res.exam.description)
+    setQuestions(res.exam.questions)
+  }
 
   const handleAddQuestion = () => {
     setQuestions([...questions, { qtype: QUE_TYPE.QUE_TYPE_TEXT, qtext: '', qimg: '', qcode: '', anstype: ANS_TYPE.ANS_TYPE_TEXT, options: [{ otype: OPTION_TYPE.TYPE_TEXT, text: '', isCorrect: false }] }]);
@@ -61,21 +94,23 @@ const ExamPage = () => {
     // Add your logic to submit the form data
     // console.log({ title, description, questions });
 
-    console.log("Token: ",localStorage.getItem(TOKEN))
-    let response  = await fetch(BASEURL+"/api/exam/create",{
-      method :"POST",
-      headers : {
+    console.log("Token: ", localStorage.getItem(TOKEN))
+    let response = await fetch(BASEURL + "/api/exam/create", {
+      method: "POST",
+      headers: {
         'Content-Type': 'application/json',
-        'token' : localStorage.getItem(TOKEN)
+        'token': localStorage.getItem(TOKEN)
       },
-      body:JSON.stringify({ title, description, questions })
+      body: JSON.stringify({examid, title, description, questions })
     })
     response = await response.json()
     console.log(response)
-    if(response.success ===1){
+    if (response.success === 1) {
       setTitle("");
       setDescription("")
       setQuestions([{ qtype: QUE_TYPE.QUE_TYPE_TEXT, qtext: '', qimg: '', qcode: '', anstype: ANS_TYPE.ANS_TYPE_TEXT, options: [{ otype: OPTION_TYPE.TYPE_TEXT, text: '', isCorrect: false }] }])
+
+      navigate("/TeacherHome")
     }
   };
 
@@ -92,9 +127,11 @@ const ExamPage = () => {
     let updatedQuestions = [...questions];
     updatedQuestions[questionIndex].options.splice(optionIndex, 1);
     setQuestions(updatedQuestions);
+    
   };
   return (
     <>
+      <LoggedNav />
       <form onSubmit={handleSubmit}>
         <div className="w-5/6 mx-auto border rounded-xl my-10 shadow-xl">
 
@@ -132,11 +169,11 @@ const ExamPage = () => {
               <button onClick={handleAddQuestion} className="bg-green-700 text-white p-5 rounded-xl">Add Question</button>
             </div>
 
-            <div className="questions-container w-[100%] mt-3">
+            <div className="questions-container w-full mt-3">
               {
                 questions.map((question, idx) => {
                   return (
-                    <QuestionBase props={{ len:questions.length ,handleChangeOption, handleDeleteOption, handleChangeRadioOption, handleAddOption, question, idx, handleRemoveQuestion, handleChangeQuestion }} />
+                    <QuestionBase props={{ len: questions.length, handleChangeOption, handleDeleteOption, handleChangeRadioOption, handleAddOption, question, idx, handleRemoveQuestion, handleChangeQuestion }} />
                   );
                 })
               }
@@ -145,9 +182,17 @@ const ExamPage = () => {
             </div>
           </div>
 
-          <button style={{ backgroundColor: questions.length > 0 ? "" : "#cccccc", cursor: questions.length > 0 ? "pointer" : "not-allowed" }}
-   type="submit" className="bg-green-600 px-5 py-2 font-bold text-white rounded shadow m-5" disabled={questions.length ===0} >Submit</button>
-        </div>
+          <button
+            style={{
+              backgroundColor: questions && questions.length > 0 ? "" : "#cccccc",
+              cursor: questions && questions.length > 0 ? "pointer" : "not-allowed"
+            }}
+            type="submit"
+            className="bg-green-600 px-5 py-2 font-bold text-white rounded shadow m-5"
+            disabled={!questions || questions.length === 0}
+          >
+            Submit
+          </button>      </div>
 
       </form>
     </>

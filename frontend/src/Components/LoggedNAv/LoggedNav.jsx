@@ -12,7 +12,7 @@ const navigate = useNavigate()
     localStorage.removeItem(LOGGED_IN)
     navigate("/")
   }
-  console.log(user)
+  //console.log(user)
   return (
     <div className='w-full border'>
       <div className='w-5/6  my-5 flex justify-between items-center  mx-auto'>
