@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { QUE_TYPE, ANS_TYPE, OPTION_TYPE, BASEURL, TOKEN } from "../../constants";
 import QuestionBase from "../../Components/baseQuestion/QuestionBase";
 
+const initQuestions = [{ qtype: QUE_TYPE.QUE_TYPE_TEXT, qtext: '', qimg: '', qcode: '', anstype: ANS_TYPE.ANS_TYPE_TEXT, options: [{ otype: OPTION_TYPE.TYPE_TEXT, text: '', isCorrect: false }] }]  
 
 const ExamPage = () => {
 
   const [title, setTitle] = useState('Exam0');
   const [description, setDescription] = useState('');
-  const [questions, setQuestions] = useState([{ qtype: QUE_TYPE.QUE_TYPE_TEXT, qtext: '', qimg: '', qcode: '', anstype: ANS_TYPE.ANS_TYPE_TEXT, options: [{ otype: OPTION_TYPE.TYPE_TEXT, text: '', isCorrect: false }] }]);
+  const [questions, setQuestions] = useState(initQuestions);
 
   const handleAddQuestion = () => {
     setQuestions([...questions, { qtype: QUE_TYPE.QUE_TYPE_TEXT, qtext: '', qimg: '', qcode: '', anstype: ANS_TYPE.ANS_TYPE_TEXT, options: [{ otype: OPTION_TYPE.TYPE_TEXT, text: '', isCorrect: false }] }]);
@@ -71,6 +72,11 @@ const ExamPage = () => {
     })
     response = await response.json()
     console.log(response)
+    if(response.success ===1){
+      setTitle("");
+      setDescription("")
+      setQuestions([{ qtype: QUE_TYPE.QUE_TYPE_TEXT, qtext: '', qimg: '', qcode: '', anstype: ANS_TYPE.ANS_TYPE_TEXT, options: [{ otype: OPTION_TYPE.TYPE_TEXT, text: '', isCorrect: false }] }])
+    }
   };
 
   const [isTitleFocused, setTitleFocused] = useState(false)
