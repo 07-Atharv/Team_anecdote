@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { QUE_TYPE, ANS_TYPE, OPTION_TYPE } from "../../constants";
-import QuestionBase from "../../components/baseQuestion/QuestionBase";
+import QuestionBase from "../../Components/baseQuestion/QuestionBase";
 
 
 const ExamPage = () => {

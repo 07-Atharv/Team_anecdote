@@ -5,7 +5,7 @@ import { Dropdown } from "flowbite-react";
 import TextAnswer from "../textAnswer";
 import ImageAnswer from "../ImageAnswer";
 import MCQAnswer from "../MCQAnswer";
-import CodeAnswer from "../codeAnswer/";
+import CodeAnswer from "../codeAnswer";
 
 const TextQuestion = (props) => {
   const details = props.props;
