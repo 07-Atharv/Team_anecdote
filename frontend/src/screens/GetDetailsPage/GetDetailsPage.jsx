@@ -55,7 +55,7 @@ const GetDetailsPage = () => {
                 .then(async (response) => {
                   const res = await response.json();
                   if (response.status === 400) {
-                    alert( res.message );
+                    alert(res.message);
                   } else if (response.status == 500) {
                     console.log(res.body);
                   } else {
@@ -70,7 +70,8 @@ const GetDetailsPage = () => {
                   console.log("error");
                   console.error(error);
                 });
-            }}>
+            }}
+          >
             Continue
           </button>
         </div>

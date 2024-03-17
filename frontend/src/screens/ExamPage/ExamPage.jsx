@@ -42,19 +42,19 @@ import CodeQuestion from "../../components/codeQuestion/CodeQuestion";
 //             def __init__(self, name, age):
 //                 self.name = name
 //                 self.age = age
-            
+
 //             def sound(self):
 //                 pass
-        
+
 //         class Dog:  # Incomplete line
 //             def __init__(self, name, age, breed):
 //                 super().__init__(name, age)
 //                 self.breed = breed
-            
+
 //             def sound(self):
 //                 # Add code here
 //                 pass
-        
+
 //         # Incomplete code
 //         `,
 //     fileurl: "",
@@ -84,31 +84,35 @@ const ExamPage = () => {
             className="font-bold py-4 rounded-xl shadow-md my-2"
             onClick={() => {
               setQuestions([
-                ...questions, 
+                ...questions,
                 {
-                    // text question
-                    id: "123",
-                    question: "Enter Your Question Here",
-                    type: "text",
-                    answer: "",
-                  }
+                  // text question
+                  id: "123",
+                  question: "Enter Your Question Here",
+                  type: "text",
+                  answer: "",
+                },
               ]);
-            }}>
+            }}
+          >
             {" "}
             Text Question{" "}
           </button>
-          <button onClick={() => {
+          <button
+            onClick={() => {
               setQuestions([
-                ...questions, 
+                ...questions,
                 {
-                    // text question
-                    id: "123",
-                    question: "Enter Your Question Here",
-                    type: "code",
-                    answer: "",
-                  }
+                  // text question
+                  id: "123",
+                  question: "Enter Your Question Here",
+                  type: "code",
+                  answer: "",
+                },
               ]);
-            }} className="font-bold py-4 rounded-xl shadow-md my-2">
+            }}
+            className="font-bold py-4 rounded-xl shadow-md my-2"
+          >
             {" "}
             Code Question 🧑🏻‍💻
           </button>
@@ -129,7 +133,8 @@ const ExamPage = () => {
             ) : (
               <p
                 className="font-bold text-3xl"
-                onClick={() => setNameState(true)}>
+                onClick={() => setNameState(true)}
+              >
                 {name}
               </p>
             )}
@@ -137,18 +142,21 @@ const ExamPage = () => {
 
           <div className="questions-container w-[100%] mt-12">
             {questions.map((question, ind) => {
-                console.log( question );
+              console.log(question);
               if (question.type == "text") {
                 return (
                   <>
-                    <TextQuestion props={question} index={ind+1}></TextQuestion>
+                    <TextQuestion
+                      props={question}
+                      index={ind + 1}
+                    ></TextQuestion>
                   </>
                 );
               } else if (question.type == "image") {
               } else if (question.type == "code") {
                 return (
                   <>
-                    <CodeQuestion props={ind}/>
+                    <CodeQuestion props={ind} />
                   </>
                 );
               } else if (question.type == "MCQ") {
