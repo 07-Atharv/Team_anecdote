@@ -1,16 +1,72 @@
+
 # ScoreCraft
-#### Unlock Your Academic Potential with ScoreCraft : Where Excellence Meets Assessment.
 
-ScoreCraft is an advanced examination system that modernizes traditional assessment processes by introducing innovative features to improve the assessment experience. Our platform provides a complete solution to overcome the limitations of conventional methods.
+Unlock Your Academic Potential with ScoreCraft : Where Excellence Meets Assessment!!!
 
-## Key Features
 
-- **Versatile Question Formats:** Our platform accommodates diverse question types, such as text-based, image-based, and code-upload questions, enabling institutions to create customized assessments to meet their specific needs.
 
-- **Advanced Exam Monitoring:** Utilizing cutting-edge AI technology, our platform maintains exam integrity by continuously monitoring student behavior, identifying irregularities, and promptly flagging potential instances of academic dishonesty.
+Explore MCQ’s , delve into textual wonders, decode visual puzzles ,
+and unleash code mastery. Experience diverse question formats for
+comprehensive assessments. Embrace innovation in learning.
+Your journey to academic excellence starts here.
 
-- **Immediate Feedback:** Upon completion of exams, students receive prompt feedback, streamlining the assessment process and facilitating timely performance evaluation.
 
-- **Intuitive User Interfaces:** We offer user-friendly dashboards for institutions and students alike, simplifying exam management tasks such as scheduling, administration, and result dissemination.
 
-- **Secure Exam Access:** Students are provided with personalized links to access exams during designated time frames, ensuring a secure and controlled exam environment. Additionally, each student receives a unique passkey via email, adding an extra layer of authentication for exam commencement and enhancing overall exam security.
+# Features
+
+
+* Live AI Proctoring
+* User-Friendly Interface
+* Secure Exam Integration
+* Google Authentication
+* Instant Results
+* Multile Question formats
+* Code-Upload and Image-upload Functionality
+
+
+# Modules
+
+
+## Sign-In and Sign-Up 
+
+
+* Sign-In Module:
+
+Purpose: The sign-in module allows users who already have accounts to access the platform by verifying their identity through credentials such as username/email and password.
+
+* Sign-Up Module:
+
+Purpose: The sign-up module allows new users to create accounts and gain access to the platform's features and services.
+
+
+## Live AI Proctoring
+
+
+
+* Real-Time Monitoring: The AI system continuously monitors examinee activities during the examination.
+
+* Alert Generation: Based on predefined criteria, alerts are generated for suspicious behavior or violations of examination guidelines.
+
+* Customizable Settings: Users can customize monitoring settings and alert thresholds to suit their specific requirements.
+
+* Comprehensive Reports: Detailed reports are generated post-examination, providing insights into examinee behavior and any detected irregularities.
+
+
+## User Friendly Interface
+
+ScoreCraft's User-Friendly Interface provides institutions with an intuitive platform for managing exams with ease and efficiency.
+
+## Google Authentication Feature
+
+ScoreCraft's Google Authentication feature provides a secure and streamlined login experience for users by leveraging Google's authentication system.
+
+
+## Multiple Questions Format
+
+* Customization: Our platform offers customizable assessment templates, allowing instructors to tailor assessments to their specific requirements and objectives.
+
+* Comprehensive Evaluation: With support for various question types, including code upload, image upload, and multiple-choice questions, our platform facilitates comprehensive evaluation across different subjects and disciplines.
+
+##  Secure Exam Integration
+
+ScoreCraft's Google Authentication feature provides a secure and streamlined login experience for users by leveraging Google's authentication system.
