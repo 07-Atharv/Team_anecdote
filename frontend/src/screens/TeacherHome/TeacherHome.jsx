@@ -2,12 +2,8 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { Dropdown } from "flowbite-react";
-<<<<<<< HEAD
-import { TOKEN, LOGGED_IN } from "../../constants";
 
-=======
 import LoggedNav from "../../Components/LoggedNAv/LoggedNav";
->>>>>>> ecaf7b3c2a965a49657889b8f83ec5a3fbb8114f
 const exams = [
   {
     name: "Exam1",
@@ -465,6 +461,7 @@ const TeacherHome = () => {
             );
           })}
         </div>
+      </div>
       </div>
     </>
   );
