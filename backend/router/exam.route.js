@@ -31,4 +31,37 @@ router.post("/create", verifyTeacher, async (req, res) => {
   }
 });
 
+router.get("/getone", bypass, async (req, res) => {
+  try {
+    const { id } = req.body;
+    
+
+    const exam  = await Exam.findOne({_id:id})
+
+    res
+      .status(201)
+      .json({ success: 1, message: "Exam retrieved", exam });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: 0, message: "Internal Server Error" });
+  }
+});
+
+router.get("/getall", verifyTeacher, async (req, res) => {
+  try {
+    // const { id } = req.body;
+    console.log(req.teacher)
+
+    const exams  = await Exam.find({creator:req.teacher._id}).select(['-questions'])
+
+    res
+      .status(201)
+      .json({ success: 1, message: "Exam retrieved", exams });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: 0, message: "Internal Server Error" });
+  }
+});
+
+
 module.exports = router;

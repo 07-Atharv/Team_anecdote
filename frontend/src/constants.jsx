@@ -1,6 +1,15 @@
-export const BASEURL = "http://127.0.0.1:1512";
-// export const BASEURL = "https://api-scorecraft.onrender.com";
+// export const BASEURL = "http://127.0.0.1:1512";
+export const BASEURL = "https://api-scorecraft.onrender.com";
 export const TOKEN = "token";
+export const USERDATA = "userdata";
+export const USERD_KEYS ={
+    EMAIL : "email",
+    INSTITUTION : "institution",
+    NAME : "name",
+    PROFILE_URL : "profileurl",
+    ID : "_id"
+} ;
+
 export const GOOGLE_API_BASE = "https://www.googleapis.com/oauth2/v3/userinfo?access_token="
 export const LOGGED_IN = "is_logged_in";
 export const LANGUAGES_SUPPORTED = {

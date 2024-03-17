@@ -3,7 +3,7 @@ import scoreCraftLogo from "../../assets/scorecraftlogo.png"
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import React from "react";
-import { BASEURL, GOOGLE_API_BASE, LOGGED_IN, TOKEN } from "../../constants";
+import { BASEURL, GOOGLE_API_BASE, LOGGED_IN, TOKEN, USERDATA } from "../../constants";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
@@ -46,8 +46,10 @@ const navigate = useNavigate()
             alert( res.message );
           } else if( response.status == 200 ) {
             // navigating to the next page
+            // console.log(res.data)
             localStorage.setItem( TOKEN, res.token );
             localStorage.setItem( LOGGED_IN, true );
+            localStorage.setItem(USERDATA,JSON.stringify(res.data))
 
             navigate("/TeacherHome");
           }

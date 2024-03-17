@@ -2,8 +2,12 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { Dropdown } from "flowbite-react";
+<<<<<<< HEAD
 import { TOKEN, LOGGED_IN } from "../../constants";
 
+=======
+import LoggedNav from "../../Components/LoggedNAv/LoggedNav";
+>>>>>>> ecaf7b3c2a965a49657889b8f83ec5a3fbb8114f
 const exams = [
   {
     name: "Exam1",
@@ -430,28 +434,11 @@ const TeacherHome = () => {
 
   return (
     <>
-      <div className="main-container flex flex-col mt-[4%] ml-[4%]">
-        <div className="flex flex-row">
-          <h1 className="font-bold text-[2.5vw]">
-            Welcome, {"<Teacher Name>"}
-          </h1>
-          <div className="flex flex-col grow justify-center items-end mr-24">
-            <button
-              type="button"
-              onClick={() => {
-                // Logging out the user and redirecting the user to Sign in page
-                localStorage.removeItem(TOKEN);
-                localStorage.removeItem(LOGGED_IN);
+      <LoggedNav />
+      <div className="main-container w-full flex flex-col mt-[4%] ml-[4%]">
 
-                navigate("/signin");
-              }}
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 py-4 px-8 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-6">
-              Log Out
-            </button>
-          </div>
-        </div>
-
-        <h1 className="font-bold text-[1.5vw] mt-[5%] py-4">Your Exams</h1>
+        <div className="w-5/6 mx-auto">
+          <h1 className="font-bold text-3xl ">Your Exams</h1>
 
         <div className="flex flex-wrap flex-row gap-8">
           {exams.map((exam) => {
