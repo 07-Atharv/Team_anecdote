@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { QUE_TYPE, ANS_TYPE, OPTION_TYPE, BASEURL, TOKEN } from "../../constants";
-import QuestionBase from "../../Components/baseQuestion/QuestionBase";
+import QuestionBase from "../../components/baseQuestion/QuestionBase";
 
 const initQuestions = [{ qtype: QUE_TYPE.QUE_TYPE_TEXT, qtext: '', qimg: '', qcode: '', anstype: ANS_TYPE.ANS_TYPE_TEXT, options: [{ otype: OPTION_TYPE.TYPE_TEXT, text: '', isCorrect: false }] }]  
 
