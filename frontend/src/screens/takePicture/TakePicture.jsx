@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import Webcam from "react-webcam";
+import { FACE_START } from "../../constants";
+import { useNavigate } from "react-router-dom";
 
 const OG_FACE = "examinee";
 
@@ -83,7 +85,7 @@ function App() {
       );
 
     // Store the start face in localStorage
-    localStorage.setItem(OG_FACE, base64Image);
+    localStorage.setItem(FACE_START, base64Image);
     setStartFace(base64Image);
   };
 
@@ -115,14 +117,20 @@ function App() {
     // console.log(res)
   };
 
-  return (
-    <div onCopy={handleCopy} onPaste={handlePaste}>
-      <Webcam className="" audio={false} ref={webcamRef} />
-      <button onClick={captureStartFace}>Capture Start Face</button>
 
-      <button onClick={captureAndSendImage}>Capture and Send Image</button>
-      {startFace && <img src={startFace} alt="start-face" />}
+  const navigator = useNavigate()
+  return (
+   <div className="w-full">
+     <div className="w-1/2 mt-20 justify-center mx-auto" onCopy={handleCopy} onPaste={handlePaste}>
+      <Webcam className="w-1/2 " audio={false} ref={webcamRef} />
+      
+
+      <button className="bg-green-600 mx-10  mx-auto  text-white rounded-xl  p-4" onClick={captureStartFace}>Capture Start Face</button>
+      {startFace  && <button  className="mx-auto p-5 text-white bg-green-700" onClick={()=>{navigator("/studentTest")}}>Continue</button>}
+      {startFace && <img src={startFace} className=" w-1/2" alt="start-face" />} 
     </div>
+   
+   </div>
   );
 }
 

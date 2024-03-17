@@ -48,3 +48,6 @@ export const OPTION_TYPE = {
     TYPE_CODE: "code",
 
 }
+
+
+export const FACE_START = "startface"
