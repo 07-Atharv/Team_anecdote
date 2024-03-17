@@ -64,10 +64,18 @@ const TeacherHome = () => {
                   ></div>
 
                 </div>
+<<<<<<< HEAD
               );
             })}
           </div>
         </div>    </div>
+=======
+            );
+          })}
+        </div>
+      </div>
+      </div>
+>>>>>>> b64d5001c4deaa6512a3131b95400546b5eb0242
     </>
   );
 };
