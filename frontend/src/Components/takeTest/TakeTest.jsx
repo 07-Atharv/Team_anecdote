@@ -14,7 +14,7 @@ const TakeTest = () => {
           alt="Flowbite Logo"></img>
           <p className="font-bold text-2xl ml-4">ScoreCraft</p>
       </div>
-      <div className="flex flex-col main-container w-[100vw] h-[100vh] items-center justify-center">
+      <div className="flex flex-col main-container w-[100vw] h-[93vh] items-center justify-center">
         <div className="flex flex-col items-center content.-container p-8 w-[40%] h-[30%] rounded-xl shadowmd border border-slate-200">
           <h1 className="font-bold text-3xl">Enter your Unique Test Code</h1>
 

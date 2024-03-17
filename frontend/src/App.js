@@ -9,6 +9,7 @@ import ExamPage from "./screens/ExamPage/ExamPage";
 import GetDetailsPage from "./screens/GetDetailsPage";
 
 import StudentTest from "./screens/StudentTest";
+import TakeTest from "./components/takeTest/TakeTest";
 
 const App = () => {
   return (
@@ -21,7 +22,7 @@ const App = () => {
             <Route path="/signin"  element={<SignIn/>} />
             <Route path="/TeacherHome"  element={<TeacherHome/>} />
             <Route path="/getDetails"  element={<GetDetailsPage/>} />
-            
+            <Route path="/takeTest"  element={<TakeTest/>} />
             <Route path="/studentTest"  element={<StudentTest/>} />
             <Route path="/examPage" exact element={<ExamPage/>} />
           </Routes>

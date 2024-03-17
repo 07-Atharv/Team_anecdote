@@ -17,25 +17,24 @@ const CodeAnswer = () => {
   const [codeQuestion, setCodeQuestion] = useState("");
   const [language, setLanguage] = useState("javascript");
 
-
   return (
-    <div>
-      <div className="mt-6">
-        <LanguageSelector props={{ language, onSelect }} />
+      <div className="flex flex-col w-full">
+        <div className="mt-6">
+          <LanguageSelector props={{ language, onSelect }} />
+        </div>
+        <Editor
+          theme="vs-dark"
+          height="40vh"
+          language={language}
+          onMount={onMount}
+          defaultLanguage="javascript"
+          defaultValue={CODE_SNIPPETS["javascript"]}
+          value={codeQuestion}
+          onChange={(code) => {
+            setCodeQuestion(code);
+          }}
+        />
       </div>
-      <Editor
-        theme="vs-dark"
-        height="40vh"
-        language={language}
-        onMount={onMount}
-        defaultLanguage="javascript"
-        defaultValue={CODE_SNIPPETS["javascript"]}
-        value={codeQuestion}
-        onChange={(code) => {
-          setCodeQuestion(code);
-        }}
-      />
-    </div>
   );
 };
 
