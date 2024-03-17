@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import TextQuestion from "../../components/textQuestion/textQuestion";
-import CodeQuestion from "../../components/codeQuestion/CodeQuestion";
 import { QUE_TYPE, ANS_TYPE, OPTION_TYPE } from "../../constants";
 import QuestionBase from "../../components/baseQuestion/QuestionBase";
 
