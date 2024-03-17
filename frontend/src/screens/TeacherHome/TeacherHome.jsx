@@ -2,6 +2,7 @@
 import React from "react";
 
 import { Dropdown } from "flowbite-react";
+import LoggedNav from "../../Components/LoggedNAv/LoggedNav";
 const exams = [
   {
     name: "Exam1",
@@ -426,32 +427,33 @@ const exams = [
 const TeacherHome = () => {
   return (
     <>
-      <div className="main-container flex flex-col mt-[4%] ml-[4%]">
-        <h1 className="font-bold text-[2.5vw]">
-          {" "}
-          Welcome, {"<Teacher Name>"}{" "}
-        </h1>
+      <LoggedNav />
+      <div className="main-container w-full flex flex-col mt-[4%] ml-[4%]">
 
-        <h1 className="font-bold text-[1.5vw] mt-[5%] py-4">Your Exams</h1>
+        <div className="w-5/6 mx-auto">
+          <h1 className="font-bold text-3xl ">Your Exams</h1>
 
-        <div className="flex flex-wrap flex-row gap-8">
-          {exams.map((exam) => {
-            return (
-              <div className="exam-container border-slate-400 shadow-md rounded-xl h-[300px] w-[400px] flex flex-row flex-wrap hover:scale-105 transition duration-500 flex flex-col">
-                <div className="thumbnail-container grow"></div>
-                <div className="name-container p-4 flex flex-row">
-                  <p className="grow"> {exam.name} </p>
+          <div className="flex flex-wrap flex-row gap-8">
 
-                  <Dropdown label="Dropdown button" dismissOnClick={false}>
-                    <Dropdown.Item>Dashboard</Dropdown.Item>
-                    <Dropdown.Item>Settings</Dropdown.Item>
-                    <Dropdown.Item>Earnings</Dropdown.Item>
-                    <Dropdown.Item>Sign out</Dropdown.Item>
-                  </Dropdown>
+            
+            {exams.map((exam) => {
+              return (
+                <div className="exam-container border-slate-400 shadow-md rounded-xl h-[300px] w-[400px] flex flex-row flex-wrap hover:scale-105 transition duration-500 flex flex-col">
+                  <div className="thumbnail-container grow"></div>
+                  <div className="name-container p-4 flex flex-row">
+                    <p className="grow"> {exam.name} </p>
+
+                    <Dropdown label="Dropdown button" dismissOnClick={false}>
+                      <Dropdown.Item>Dashboard</Dropdown.Item>
+                      <Dropdown.Item>Settings</Dropdown.Item>
+                      <Dropdown.Item>Earnings</Dropdown.Item>
+                      <Dropdown.Item>Sign out</Dropdown.Item>
+                    </Dropdown>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </>
