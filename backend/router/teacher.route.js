@@ -47,8 +47,8 @@ router.post("/signin",bypass, async (req,res)=>{
         if (!teacher.verified) {
           return res.status(401).json({success : 0, message: 'Account not verified' });
         }
-    
-        res.status(200).json({ success : 1,message: 'Login Successfull', token : generateToken({id:teacher._id}),data :teacher });
+    const token = await generateToken({id:teacher._id})
+        res.status(200).json({ success : 1,message: 'Login Successfull', token,data :teacher });
       } catch (error) {
         console.error(error);
         res.status(500).json({success : 0, message: 'Server Error' });

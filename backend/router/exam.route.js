@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const Exam = require("../models/exam.model")
 const { bypass, verifyTeacher } = require("../middleware/api.middleware");
 router.get("/", bypass, (req, res) => {
   res.send("Hello Exam");
@@ -8,13 +8,14 @@ router.get("/", bypass, (req, res) => {
 
 router.post("/create", verifyTeacher, async (req, res) => {
   try {
-    const { title, description, teacher, questions } = req.body;
-
+    const { title, description, questions } = req.body;
+    
     // Create a new exam
+    console.log(req.teacher)
     const exam = new Exam({
       title,
       description,
-      creator: teacher._id,
+      creator: req.teacher._id,
       questions,
     });
 
