@@ -19,6 +19,16 @@ const generateToken = (data)=>{
     return jwt.sign(data,JWT_SECRET)
 }
 
+const decodeToken = (token) => {
+    try {
+      const decoded = jwt.verify(token, JWT_SECRET);
+      return decoded;
+    } catch (error) {
+      // Handle error, token is invalid
+      console.error('Invalid token:', error.message);
+      return null;
+    }
+  };
 module.exports = {
-    hashPassword,matchPassword,generateToken
+    hashPassword,matchPassword,decodeToken,generateToken
 }

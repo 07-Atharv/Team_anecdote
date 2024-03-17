@@ -27,7 +27,7 @@ const questionSchema = new Schema({
     {
       otype: {
         type: String,
-        enum : ["text",  "code", "check"],
+        enum : ["text", "image", "code"],
         default :"text"
       },
       text: {

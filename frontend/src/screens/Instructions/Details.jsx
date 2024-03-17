@@ -76,7 +76,9 @@ const Details = () => {
         <h1> 2 Hours</h1>
       </div>
       <div>
-        <Button variant="contained">Start Test</Button>
+        <Button variant="contained" className="font-bold">
+          Start Test
+        </Button>
       </div>
     </div>
   );

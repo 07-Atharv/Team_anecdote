@@ -5,6 +5,7 @@ import { Dropdown } from "flowbite-react";
 import TextAnswer from "../textAnswer";
 import ImageAnswer from "../ImageAnswer";
 import MCQAnswer from "../MCQAnswer";
+import CodeAnswer from "../codeAnswer";
 
 const TextQuestion = (props) => {
   const details = props.props;
@@ -57,6 +58,8 @@ const TextQuestion = (props) => {
             <Dropdown.Item
               onClick={() => {
                 setSelectedLabel("Code");
+
+                setAnswerComponent( <CodeAnswer/>)
               }}>
               Code
             </Dropdown.Item>
@@ -64,7 +67,7 @@ const TextQuestion = (props) => {
               onClick={() => {
                 setSelectedLabel("Text");
 
-                setAnswerComponent( <TextAnswer/> );
+                setAnswerComponent( <TextAnswer disabled={true} /> );
               }}>
               Text
             </Dropdown.Item>
