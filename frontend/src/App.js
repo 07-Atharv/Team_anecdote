@@ -7,8 +7,9 @@ import SignUp from "./screens/SignUp";
 import TeacherHome from "./screens/TeacherHome";
 import ExamPage from "./screens/ExamPage/ExamPage";
 import GetDetailsPage from "./screens/GetDetailsPage";
-
+import TakeTest from "./Components/takeTest/TakeTest";
 import StudentTest from "./screens/StudentTest";
+
 
 const App = () => {
   return (
@@ -21,7 +22,7 @@ const App = () => {
             <Route path="/signin"  element={<SignIn/>} />
             <Route path="/TeacherHome"  element={<TeacherHome/>} />
             <Route path="/getDetails"  element={<GetDetailsPage/>} />
-            
+            <Route path="/takeTest"  element={<TakeTest/>} />
             <Route path="/studentTest"  element={<StudentTest/>} />
             <Route path="/examPage" exact element={<ExamPage/>} />
           </Routes>

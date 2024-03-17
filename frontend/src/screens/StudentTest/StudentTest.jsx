@@ -17,16 +17,9 @@ const dummyData = [
       {
         qtype: "image",
         qtext: "Identify the following image:",
-        qimg: "image-url.jpg",
+        qimg: "https://res.cloudinary.com/dvg8flzpt/image/upload/v1710654034/egaky2brhwgk1l4zaoo3.jpg",
         anstype: "text",
         options: [],
-      },
-      {
-        qtype: "code",
-        qtext: "Write a function to add two numbers.",
-        qcode: "function add(a, b) { return a + b; }",
-        anstype: "code",
-        options: [{ otype: "text", text: "a + b", isCorrect: true }],
       },
       {
         qtype: "text",
@@ -36,6 +29,13 @@ const dummyData = [
           { otype: "text", text: "Donald Trump", isCorrect: false },
           { otype: "text", text: "Joe Biden", isCorrect: true },
         ],
+      },
+      {
+        qtype: "code",
+        qtext: "Write a function to add two numbers.",
+        qcode: "function add(a, b) { return a + b; }",
+        anstype: "code",
+        options: [{ otype: "text", text: "a + b", isCorrect: true }],
       },
       {
         qtype: "text",
@@ -49,7 +49,7 @@ const dummyData = [
       {
         qtype: "image",
         qtext: "Identify the following image:",
-        qimg: "image-url.jpg",
+        qimg: "https://res.cloudinary.com/dvg8flzpt/image/upload/v1710654034/egaky2brhwgk1l4zaoo3.jpg",
         anstype: "check",
         options: [
           { otype: "text", text: "Option 1", isCorrect: true },
@@ -67,7 +67,7 @@ const dummyData = [
       {
         qtype: "image",
         qtext: "Identify the following image:",
-        qimg: "image-url.jpg",
+        qimg: "https://res.cloudinary.com/dvg8flzpt/image/upload/v1710654034/egaky2brhwgk1l4zaoo3.jpg",
         anstype: "code",
         options: [],
       },
@@ -81,7 +81,7 @@ const dummyData = [
       {
         qtype: "image",
         qtext: "Identify the following image:",
-        qimg: "image-url.jpg",
+        qimg: "https://res.cloudinary.com/dvg8flzpt/image/upload/v1710654034/egaky2brhwgk1l4zaoo3.jpg",
         anstype: "check",
         options: [
           { otype: "text", text: "Option 1", isCorrect: true },
@@ -122,10 +122,24 @@ const StudentTest = () => {
         <div className="font-bold text-3xl p-12"> Test Id: {state.test_id}</div>
 
         <div className="question-hold-container rounded-xl border border-slate-300 w-[70%] mx-auto">
-          <StudentQuestion question={questions[parseInt(index)]} index={index} />
+          <StudentQuestion
+            question={questions[parseInt(index)]}
+            index={index}
+          />
         </div>
 
-        <div className="w-[70%] mx-auto flex flex-col justify-end items-end my-8 next-buttton-container">
+        <div className="w-[70%] mx-auto flex flex-row justify-between items-end my-8 next-buttton-container">
+          { index == 0 ? <div className=""></div> : <button
+            type="button"
+            onClick={() => {
+              if (index > 0 ) {
+                setIndex(index - 1);
+                console.log(index);
+              }
+            }}
+            class="w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none dark:focus:ring-blue-800">
+            Previous
+          </button> }
           <button
             type="button"
             onClick={() => {

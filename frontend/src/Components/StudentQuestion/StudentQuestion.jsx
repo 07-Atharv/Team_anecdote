@@ -1,16 +1,23 @@
 import React from "react";
 import StudentTextQuestion from "../StudentTextQuestion/StudentTextQuestion";
+import StudentImageQuestion from "../StudentImageQuestion";
+import StudentCodeQuestion from "../StudentCodeQuestion/StudentCodeQuestion";
 
 const StudentQuestion = (props) => {
   console.log(props.question.qtype);
- 
 
   if (props.question.qtype === "text") {
-    return <StudentTextQuestion question={props.question} index={props.index} />;
+    return (
+      <StudentTextQuestion question={props.question} index={props.index} />
+    );
   } else if (props.question.qtype == "code") {
-    return <StudentTextQuestion />;
+    return (
+      <StudentCodeQuestion question={props.question} index={props.index} />
+    );
   } else if (props.question.qtype == "image") {
-    return <StudentTextQuestion />;
+    return (
+      <StudentImageQuestion question={props.question} index={props.index} />
+    );
   }
 };
 
