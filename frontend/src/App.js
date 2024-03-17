@@ -8,6 +8,8 @@ import TeacherHome from "./screens/TeacherHome";
 
 import ExamPage from "./screens/ExamPage/ExamPage";
 import GetDetailsPage from "./screens/GetDetailsPage";
+import TakeTest from "./components/takeTest";
+import StudentTest from "./screens/StudentTest";
 
 const App = () => {
   return (
@@ -15,11 +17,13 @@ const App = () => {
       <div>
         <Router onUpdate={() => window.scrollTo(0, 0)}>
           <Routes>
-            <Route path="/" exact element={<LandingPage/>} />
-            <Route path="/signup" exact element={<SignUp/>} />
-            <Route path="/signin" exact element={<SignIn/>} />
-            <Route path="/TeacherHome" exact element={<TeacherHome/>} />
-            <Route path="/getDetails" exact element={<GetDetailsPage/>} />
+            <Route path="/" element={<LandingPage/>} />
+            <Route path="/signup"  element={<SignUp/>} />
+            <Route path="/signin"  element={<SignIn/>} />
+            <Route path="/TeacherHome"  element={<TeacherHome/>} />
+            <Route path="/getDetails"  element={<GetDetailsPage/>} />
+            <Route path="/takeTest"  element={<TakeTest/>} />
+            <Route path="/studentTest"  element={<StudentTest/>} />
             <Route path="/examPage" exact element={<ExamPage/>} />
           </Routes>
         </Router>
