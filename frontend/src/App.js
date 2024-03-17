@@ -10,21 +10,20 @@ import GetDetailsPage from "./screens/GetDetailsPage";
 import TakeTest from "./Components/takeTest/TakeTest";
 import StudentTest from "./screens/StudentTest";
 
-
 const App = () => {
   return (
     <>
       <div>
         <Router onUpdate={() => window.scrollTo(0, 0)}>
           <Routes>
-            <Route path="/" element={<LandingPage/>} />
-            <Route path="/signup"  element={<SignUp/>} />
-            <Route path="/signin"  element={<SignIn/>} />
-            <Route path="/TeacherHome"  element={<TeacherHome/>} />
-            <Route path="/getDetails"  element={<GetDetailsPage/>} />
-            <Route path="/takeTest"  element={<TakeTest/>} />
-            <Route path="/studentTest"  element={<StudentTest/>} />
-            <Route path="/examPage" exact element={<ExamPage/>} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/TeacherHome" element={<TeacherHome />} />
+            <Route path="/getDetails" element={<GetDetailsPage />} />
+            <Route path="/takeTest" element={<TakeTest />} />
+            <Route path="/studentTest" element={<StudentTest />} />
+            <Route path="/examPage" element={<ExamPage />} />
           </Routes>
         </Router>
       </div>

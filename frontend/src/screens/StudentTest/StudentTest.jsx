@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import StudentQuestion from "../../Components/StudentQuestion/StudentQuestion";
+import WebcamProctor from "../../Components/WebcamProctor/WebcamProctor";
 
 const dummyData = [
   {
@@ -118,40 +119,50 @@ const StudentTest = () => {
 
   return (
     <>
-      <div className="main-container w-[95%] mx-auto">
-        <div className="font-bold text-3xl p-12"> Test Id: {state.test_id}</div>
+      <div className="flex flex-row">
+        <WebcamProctor className="absolute bg-red" />
+        <div className="z-100 main-container w-[95%] mx-auto">
+          <div className="font-bold text-3xl p-12">
+            {" "}
+            Test Id: {state.test_id}
+          </div>
 
-        <div className="question-hold-container rounded-xl border border-slate-300 w-[70%] mx-auto">
-          <StudentQuestion
-            question={questions[parseInt(index)]}
-            index={index}
-          />
-        </div>
+          <div className="question-hold-container rounded-xl border border-slate-300 w-[70%] mx-auto">
+            <StudentQuestion
+              question={questions[parseInt(index)]}
+              index={index}
+            />
+          </div>
 
-        <div className="w-[70%] mx-auto flex flex-row justify-between items-end my-8 next-buttton-container">
-          { index == 0 ? <div className=""></div> : <button
-            type="button"
-            onClick={() => {
-              if (index > 0 ) {
-                setIndex(index - 1);
-                console.log(index);
-              }
-            }}
-            class="w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none dark:focus:ring-blue-800">
-            Previous
-          </button> }
-          <button
-            type="button"
-            onClick={() => {
-              if (index + 1 == questions.length) {
-              } else {
-                setIndex(index + 1);
-                console.log(index);
-              }
-            }}
-            class="w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none dark:focus:ring-blue-800">
-            Next
-          </button>
+          <div className="w-[70%] mx-auto flex flex-row justify-between items-end my-8 next-buttton-container">
+            {index == 0 ? (
+              <div className=""></div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  if (index > 0) {
+                    setIndex(index - 1);
+                    console.log(index);
+                  }
+                }}
+                class="w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none dark:focus:ring-blue-800">
+                Previous
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => {
+                if (index + 1 == questions.length) {
+                } else {
+                  setIndex(index + 1);
+                  console.log(index);
+                }
+              }}
+              class="w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none dark:focus:ring-blue-800">
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </>
