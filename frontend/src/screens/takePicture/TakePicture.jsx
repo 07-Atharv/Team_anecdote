@@ -126,7 +126,9 @@ function App() {
       
 
       <button className="bg-green-600 mx-10  mx-auto  text-white rounded-xl  p-4" onClick={captureStartFace}>Capture Start Face</button>
-      {startFace  && <button  className="mx-auto p-5 text-white bg-green-700" onClick={()=>{navigator("/studentTest")}}>Continue</button>}
+      {startFace  && <button  className="mx-auto p-5 text-white bg-green-700" onClick={()=>{
+        navigator("/testId")
+        }}>Continue</button>}
       {startFace && <img src={startFace} className=" w-1/2" alt="start-face" />} 
     </div>
    
