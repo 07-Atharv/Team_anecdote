@@ -13,7 +13,7 @@ function LoggedNav() {
   };
   //console.log(user)
   return (
-    <div className="w-full border">
+    <div className=" w-full border">
       <div className="w-full my-5 flex justify-between items-center  mx-auto">
         <h1 className="text-3xl font-bold ml-[3%]">
           Welcome, {user[USERD_KEYS.NAME]}!
