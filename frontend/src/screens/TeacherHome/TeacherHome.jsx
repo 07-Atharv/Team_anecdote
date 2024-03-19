@@ -31,7 +31,7 @@ const TeacherHome = () => {
 
   return (
     <>
-      <LoggedNav />
+      <LoggedNav show={true}/>
       <div className="main-container w-full flex flex-col mt-[4%] ml-[4%]">
         <div className="w-5/6 mx-auto">
           <h1 className="font-bold text-4xl mb-8">Your Exams</h1>
