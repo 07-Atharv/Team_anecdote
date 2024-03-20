@@ -40,7 +40,7 @@ console.log('result')
         new Date(res.exam.start) - new Date() < 0 &&
         new Date(res.exam.end) - new Date() > 0
       ) {
-        return navigate("/studentTest", { state: { data: data, questions: res.exam.questions, start_date: res.exam.start, end_date: res.exam.end } });
+        return navigate("/studentTest", { state: { data: data, questions: res.exam.questions, start_date: res.exam.start, end_date: res.exam.end, preview: false } });
       } else {
         alert("Exam not started yet");
       }

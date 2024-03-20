@@ -22,6 +22,9 @@ Your journey to academic excellence starts here.
 * Instant Results
 * Multile Question formats
 * Code-Upload and Image-upload Functionality
+* Automatic Question Generation using Natrual Langauage Processing
+* Dynamic Question Pooling 
+
 
 
 # Modules
@@ -70,3 +73,16 @@ ScoreCraft's Google Authentication feature provides a secure and streamlined log
 ##  Secure Exam Integration
 
 ScoreCraft's Google Authentication feature provides a secure and streamlined login experience for users by leveraging Google's authentication system.
+
+
+
+## Automatic Question Generation using Natrual Langauage Processing 
+
+
+
+* With the help of the Natrual Langauage Processing File can be taken as input and then based on the PDF content various MCQ are generated
+
+
+## Dynamic Question Pooling 
+
+Questions to the each user is different to avoid cheating

@@ -69,17 +69,13 @@ const StudentTest = () => {
 
   const navigate = useNavigate();
   const handleSubmission = async (e) => {
-    if (e == true) {
+    if (e ) {
       e.preventDefault();
-    }
-
-    if( state.preview == true ) {
-      return;
     }
 
     console.log("solution submitted");
 
-    // console.log({examId,studentName,studentEmail,answers})
+    console.log({examId,studentName,studentEmail,answers})
     let res = await fetch(BASEURL + "/api/submission/submit", {
       method: "POST",
       headers: {
@@ -92,7 +88,7 @@ const StudentTest = () => {
 
     if (res.success === 1) {
       alert("Submission Successfull");
-      navigate("/studentres",{state : {email : studentEmail}});
+      navigate("/studentres", { state: { email: studentEmail } });
       return;
     }
     alert("Error in submission");
@@ -189,12 +185,12 @@ const StudentTest = () => {
             <WebcamProctor
               className=" absolute  bg-red"
               handleTabSwitch={() => {
-                if (state.preview == false) {
+                if (state.preview === false) {
                   setTabAlert(true);
                 }
               }}
               handleFullScreen={() => {
-                if (state.preview == false) {
+                if (state.preview === false ) {
                   setfullScreenAlert(true);
                 }
               }}
