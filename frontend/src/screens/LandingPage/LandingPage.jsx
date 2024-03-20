@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../components/NavBar/Navbar";
+import Navbar from "../../Components/NavBar/Navbar";
 import landingImage from "../../assets/land1.png";
 import { useNavigate } from "react-router-dom";
 import ai from "../../assets/ai.svg";
