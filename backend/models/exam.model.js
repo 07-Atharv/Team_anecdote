@@ -13,7 +13,7 @@ const questionSchema = new Schema({
   },
   qimg: {
     type: String,
-  },
+  }, 
   qcode: {
     type: String,
   },
@@ -46,6 +46,10 @@ const examSchema = new Schema({
   title: {
     type: String,
     required: true,
+  },start: {
+    type: String,
+  }, end: {
+    type: String,
   },
   description: {
     type: String,

@@ -33,7 +33,12 @@ const TakeTest = () => {
 
 
     if (res.success === 1) {
-      navigate("/studentTest", { state: { data: data, questions: res.exam.questions } });
+      if(new Date(res.exam.start ) <= new Date() ){
+        return navigate("/studentTest", { state: { data: data, questions: res.exam.questions } });
+      }
+
+      alert("Exam not started yet")
+      
     } else {
       alert(res.message)
     }

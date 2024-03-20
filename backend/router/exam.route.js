@@ -35,14 +35,14 @@ router.get("/", bypass, (req, res) => {
 
 router.post("/create", verifyTeacher, async (req, res) => {
   try {
-    const { examid, title, description, questions } = req.body;
-
+    const { examid, title, start,end ,description, questions } = req.body;
+    console.log({ examid, title, start,end ,description, questions } )
     if (examid && examid!='') {
       // Update existing exam
       const updatedExam = await Exam.findByIdAndUpdate(examid, {
         title,
         description,
-        questions,
+        questions,start,end
       });
       
       if (!updatedExam) {
@@ -54,7 +54,7 @@ router.post("/create", verifyTeacher, async (req, res) => {
       // Create a new exam
       const exam = new Exam({
         title,
-        description,
+        description, start,end,
         creator: req.teacher._id,
         questions,
       });
@@ -115,6 +115,18 @@ router.post("/getone", bypass, async (req, res) => {
   }
 });
 
+const getRandomElements=(array, count) =>{
+  // Shuffle the array using Fisher-Yates algorithm
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+
+  // Return the first 'count' elements
+  return array.slice(0, count);
+}
+
+
 router.post("/getbystudent", bypass, async (req, res) => {
   try {
     const { id,email,name } = req.body;
@@ -135,6 +147,15 @@ router.post("/getbystudent", bypass, async (req, res) => {
       .status(400)
       .json({ success: 0, message: "NO Exam Found!" });
     }
+
+    if(exam.questions.length > 10){
+      const random = getRandomElements(exam.questions,10)
+      console.log(random)
+      exam.questions = random
+    }
+
+
+
     res
       .status(201)
       .json({ success: 1, message: "Exam retrieved", exam });
@@ -147,7 +168,7 @@ router.post("/getbystudent", bypass, async (req, res) => {
 router.get("/getall", verifyTeacher, async (req, res) => {
   try {
     // const { id } = req.body;
-    console.log(req.teacher)
+    console.log("TEacher ",req.teacher)
 
     const exams  = await Exam.find({creator:req.teacher._id}).select(['-questions'])
 

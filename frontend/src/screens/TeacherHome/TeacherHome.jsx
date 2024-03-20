@@ -26,8 +26,8 @@ const TeacherHome = () => {
     fetchData();
   }, []);
 
-  console.log( "Exam object ") ;
-  console.log( exams[0] );
+  // console.log( "Exam object ") ;
+  // console.log( exams[0] );
 
   return (
     <>
@@ -49,7 +49,7 @@ const TeacherHome = () => {
                 </h1>
               </div>
             </div>
-            {exams.map((exam) => {
+            {exams && exams.map((exam) => {
               return (
                 <div className="exam-container border border-slate-200 shadow-md rounded-xl h-[300px] w-[400px] flex flex-row flex-wrap hover:scale-105 transition duration-500 flex flex-col">
                   <div

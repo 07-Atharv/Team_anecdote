@@ -18,6 +18,7 @@ const verifyTeacher = async (req, res, next) => {
   try {
     // Verify token
     const decoded = decodeToken(token)
+    console.log(decoded)
 console.log(decoded.id)
     const teacher = await Teacher.findById(decoded.id)
     // Add decoded user to request object

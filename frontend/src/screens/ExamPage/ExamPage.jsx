@@ -27,7 +27,7 @@ const ExamPage = () => {
   let examid = "";
   try {
     examid = location.state["examid"];
-  } catch (error) {}
+  } catch (error) { }
   const [title, setTitle] = useState("Exam0");
   const [description, setDescription] = useState("");
   const [questions, setQuestions] = useState(initQuestions);
@@ -40,6 +40,24 @@ const ExamPage = () => {
     }
   }, [examid]);
 
+
+
+  const [start, setStart] = useState('');
+  const [end, setEnd] = useState('');
+
+  const handleDateChange = (e) => {
+
+    if (e.target.name === 'start') {
+      setStart(e.target.value);
+    }
+    else {
+      setEnd(e.target.value);
+    }
+    console.log(start, " ", end)
+
+
+
+  };
   const getExam = async () => {
     let res = await fetch(BASEURL + "/api/exam/getone", {
       method: "POST",
@@ -56,6 +74,8 @@ const ExamPage = () => {
     setTitle(res.exam.title);
     setDescription(res.exam.description);
     setQuestions(res.exam.questions);
+    setStart(res.exam.start);
+    setEnd(res.exam.end);
   };
 
   const handleAddQuestion = () => {
@@ -125,6 +145,12 @@ const ExamPage = () => {
     e.preventDefault();
     // Add your logic to submit the form data
     // console.log({ title, description, questions });
+    console.log()
+    
+    if (new Date(end) < new Date(start)) {
+      alert('End date must be greater than start date');
+      return;
+    }
 
     console.log("Token: ", localStorage.getItem(TOKEN));
     let response = await fetch(BASEURL + "/api/exam/create", {
@@ -133,7 +159,7 @@ const ExamPage = () => {
         "Content-Type": "application/json",
         token: localStorage.getItem(TOKEN),
       },
-      body: JSON.stringify({ examid, title, description, questions }),
+      body: JSON.stringify({ examid,start,end, title, description, questions }),
     });
     response = await response.json();
     console.log(response);
@@ -163,11 +189,11 @@ const ExamPage = () => {
     setQuestions(updatedQuestions);
   };
 
-  console.log( questions );
-  
+  console.log(questions);
+
   return (
-    <div className="main-container h-[100vh] overflow-hidden">
-      <LoggedNav show={false}/>
+    <form onSubmit={handleSubmit} className="main-container h-[100vh] overflow-hidden">
+      <LoggedNav show={false} />
       <div className="flex flex-row">
         <div className="h-[100vh] w-[17%] ">
           <div className="fixed h-[100vh] -translate-y-[7vh]  w-[17%] border border-slate-100 rounded-md">
@@ -180,12 +206,22 @@ const ExamPage = () => {
                 <i class="bx bx-plus pr-1"></i>
                 <p>Add Question</p>
               </button>
+              <div>
+                      <div class="relative mt-4">
+                        <input type="datetime-local" value={start} onChange={handleDateChange} id="start" required name="start" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" style={{ paddingTop: '2.5rem' }} />
+                        <label for="datetime" class="absolute top-0 left-0 px-3 py-2 text-gray-500 bg-white">Start Date and Time</label>
+                      </div>
+                      <div class="relative mt-4">
+                        <input type="datetime-local" value={end} onChange={handleDateChange} id="start" required name="end" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" style={{ paddingTop: '2.5rem' }} />
+                        <label for="datetime" class="absolute top-0 left-0 px-3 py-2 text-gray-500 bg-white">End Date and Time</label>
+                      </div>
 
+                    </div>
               <div className="flex flex-col grow justify-end mb-[7vh]">
                 <button
                   onClick={() => {
                     navigate("/studentTest", {
-                      state: { data: {examId : examid, studentName :"Dummy",studentEmail:"Dummy"}, questions: questions },
+                      state: { data: { examId: examid, studentName: "Dummy", studentEmail: "Dummy" }, questions: questions },
                     });
                   }}
                   className="flex flex-row items-center justify-center w-full border border-2 border-blue-700 text-black font-bold p-5 text-md hover:bg-blue-700 hover:text-white transition duration-300 hover:scale-[102%] rounded-xl my-2">
@@ -196,55 +232,58 @@ const ExamPage = () => {
           </div>
         </div>
         <div className="grow overflow-scroll h-[100vh] ">
-          <form onSubmit={handleSubmit}>
+          <div >
             <div className="w-[90%] mx-auto  my-10 ">
               <div className="exam-container p-8 grow">
                 <div>
-                  <div className="name-container">
-                    {nameEditabe ? (
-                      <input
-                        className="text-3xl font-bold w-fit rounded-md border border-slate-300"
-                        type="text"
-                        placeholder="Exam Title"
-                        value={title}
-                        onBlur={() => {
-                          setNameEditable(false);
-                        }}
-                        required
-                        onChange={(e) => setTitle(e.target.value)}
-                      />
-                    ) : (
-                      <div className="flex flex-row items-baseline">
-                        <p className="text-3xl font-bold"> {title} </p>
-                        <i
-                          class="bx bxs-pencil text-grey-300 p-2 cursor-pointer"
-                          onClick={() => setNameEditable(true)}></i>
-                      </div>
-                    )}
+                  <div className="flex items-center rounded-xl  name-container">
+                    <div className="w-5/6">
+                      {nameEditabe ? (
+                        <input
+                          className="text-3xl font-bold w-fit rounded-md border border-slate-300"
+                          type="text"
+                          placeholder="Exam Title"
+                          value={title}
+                          onBlur={() => {
+                            setNameEditable(false);
+                          }}
+                          required
+                          onChange={(e) => setTitle(e.target.value)}
+                        />
+                      ) : (
+                        <div className="flex flex-row items-baseline">
+                          <p className="text-3xl font-bold"> {title} </p>
+                          <i
+                            class="bx bxs-pencil text-grey-300 p-2 cursor-pointer"
+                            onClick={() => setNameEditable(true)}></i>
+                        </div>
+                      )}
 
-                    <div className="h-2"></div>
+                      <div className="h-2"></div>
 
-                    {descriptionEditable ? (
-                      <textarea
-                        className="text-sm my-5  w-full"
-                        type="text"
-                        placeholder="Description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        style={{
-                          width: "100%",
-                          padding: "8px",
-                          borderBottom: "1px solid",
-                          borderRadius: "4px",
-                        }}></textarea>
-                    ) : (
-                      <div className="flex flex-row items-baseline">
-                        <p className="text-sm text-gray-500"> {description} </p>
-                        <i
-                          class="bx bxs-pencil text-grey-300 p-2 cursor-pointer"
-                          onClick={() => setNameEditable(true)}></i>
-                      </div>
-                    )}
+                      {descriptionEditable ? (
+                        <textarea
+                          className="text-xl my-5  w-full"
+                          type="text"
+                          placeholder="Description"
+                          value={description} onBlur={setDescriptionEditable(false)}
+                          onChange={(e) => setDescription(e.target.value)}
+                          style={{
+                            width: "100%",
+                            padding: "8px",
+                            borderBottom: "1px solid",
+                            borderRadius: "4px",
+                          }}></textarea>
+                      ) : (
+                        <div className="flex flex-row items-baseline">
+                          <p className="text-xl text-gray-500"> {description} </p>
+                          <i
+                            class="bx bxs-pencil text-grey-300 p-2 cursor-pointer"
+                            onClick={() => setDescriptionEditable(true)}></i>
+                        </div>
+                      )}
+                    </div>
+                   
                   </div>
                 </div>
 
@@ -287,10 +326,10 @@ const ExamPage = () => {
 
               <div className="h-32"></div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 

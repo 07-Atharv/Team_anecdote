@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-import React, { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
-import StudentQuestion from "../../Components/StudentQuestion/StudentQuestion";
-import WebcamProctor from "../../Components/WebcamProctor/WebcamProctor";
-import { FACE_START } from "../../constants";
-import Webcam from "react-webcam";
-=======
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import StudentQuestion from "../../Components/StudentQuestion/StudentQuestion";
 import WebcamProctor from "../../Components/WebcamProctor/WebcamProctor";
 import Navbar from "../../Components/NavBar/Navbar";
 import { BASEURL } from "../../constants";
->>>>>>> 30b9c0ac731bd61683da433048d64991e19305f3
 
 const dummyData = [
   {
