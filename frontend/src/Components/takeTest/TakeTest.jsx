@@ -5,8 +5,11 @@ import { BASEURL, TOKEN } from "../../constants";
 import Navbar from "../NavBar/Navbar";
 
 const TakeTest = () => {
-
-  const [data, setData] = useState({ examId: "", studentName: "", studentEmail: "" });
+  const [data, setData] = useState({
+    examId: "",
+    studentName: "",
+    studentEmail: "",
+  });
 
   const handleOnChange = async (e) => {
     const { name, value } = e.target;
@@ -16,6 +19,7 @@ const TakeTest = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('gere')
     let res = await fetch(BASEURL + "/api/exam/getbystudent", {
       method: "POST",
       headers: {
@@ -25,55 +29,67 @@ const TakeTest = () => {
       body: JSON.stringify({
         id: data.examId,
         email: data.studentEmail,
-        name: data.studentName
+        name: data.studentName,
       }),
     });
-
+console.log('result')
     res = await res.json();
 
-
     if (res.success === 1) {
-      if(new Date(res.exam.start ) <= new Date() ){
-        return navigate("/studentTest", { state: { data: data, questions: res.exam.questions } });
+      if (
+        new Date(res.exam.start) - new Date() < 0 &&
+        new Date(res.exam.end) - new Date() > 0
+      ) {
+        return navigate("/studentTest", { state: { data: data, questions: res.exam.questions, start_date: res.exam.start, end_date: res.exam.end } });
+      } else {
+        alert("Exam not started yet");
       }
-
-      alert("Exam not started yet")
-      
     } else {
-      alert(res.message)
+      alert(res.message);
     }
-  }
+  };
   const navigate = useNavigate();
   return (
     <div>
       <Navbar />
 
-      <form onSubmit={handleSubmit} className="flex mt-10 flex-col main-container w-[100vw] h-[93vh] items-center justify-center">
-
+      <form
+        onSubmit={handleSubmit}
+        className="flex mt-10 flex-col main-container w-[100vw] h-[93vh] items-center justify-center">
         <div className="flex shadow-2xl flex-col items-center content.-container p-8 w-1/2  rounded-xl shadowmd border  border-slate-400">
           <h1 className="font-bold text-3xl">Enter your Unique Test Code</h1>
-
-
-
-          <input required="required"
-            type="text" name="studentName" value={data.studentName}
-            onChange={handleOnChange} placeholder="Student Name"
+          <input
+            required="required"
+            type="text"
+            name="studentName"
+            value={data.studentName}
+            onChange={handleOnChange}
+            placeholder="Student Name"
             className="w-5/6 mt-8 rounded-md border border-slate-300"
-          /> <input required={true}
-            type="email" name="studentEmail" value={data.studentEmail}
-            onChange={handleOnChange} placeholder="Student Email"
+          />{" "}
+          <input
+            required={true}
+            type="email"
+            name="studentEmail"
+            value={data.studentEmail}
+            onChange={handleOnChange}
+            placeholder="Student Email"
             className="w-5/6 mt-8 rounded-md border border-slate-300"
           />
-          <input required={true}
-            type="text" name="examId" value={data.examId}
-            onChange={handleOnChange} placeholder="Exam ID"
+          <input
+            required={true}
+            type="text"
+            name="examId"
+            value={data.examId}
+            onChange={handleOnChange}
+            placeholder="Exam ID"
             className="w-5/6 mt-8 rounded-md border border-slate-300"
           />
-          <button type="submit"
+          <button
+            type="submit"
             className="text-white bg-green-700 font-bold px-16 py-4 mt-8 hover:bg-green-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
             Start Test
           </button>
-
         </div>
       </form>
     </div>
