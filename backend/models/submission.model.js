@@ -8,7 +8,7 @@ const answerSchema = new Schema({
   },
   anstype:{
     type: String,
-    enum: ["text", "mcq", "code", "check"],
+    enum: ["text", "mcq", "code", "check",""],
   },
   answer: [
     {

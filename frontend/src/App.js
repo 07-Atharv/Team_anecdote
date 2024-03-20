@@ -11,6 +11,8 @@ import WebcamProctor from "./Components/WebcamProctor/WebcamProctor";
 import StudentTest from "./screens/StudentTest";
 import TakePicture from "./screens/takePicture";
 import TakeTest from "./Components/takeTest/TakeTest";
+import StudentInterface from "./screens/StudentInterface/StudentInterface";
+import StudentSummary from "./screens/StudentSummary/StudentSummary";
 
 const App = () => {
   return (
@@ -28,6 +30,8 @@ const App = () => {
             <Route path="/examPage" element={<ExamPage />} />
             <Route path="/testId" element={<TakeTest />} />
             <Route path="/webcamProctor" element={<TakePicture />} />
+            <Route path="/studentres" element={<StudentSummary />} />
+            <Route path="/studentint" element={<StudentInterface />} />
           </Routes>
         </Router>
       </div>
