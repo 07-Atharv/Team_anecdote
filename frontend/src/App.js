@@ -8,6 +8,10 @@ import TeacherHome from "./screens/TeacherHome";
 import ExamPage from "./screens/ExamPage/ExamPage";
 import GetDetailsPage from "./screens/GetDetailsPage";
 import Details from "./screens/Instructions/Details";
+import StudentInterface from "./screens/StudentInterface";
+import StudentSummary from "./screens/StudentSummary";
+
+// import student_interface from "./student_interface";
 const App = () => {
   return (
     <>
@@ -21,6 +25,8 @@ const App = () => {
             <Route path="/TeacherHome" element={<TeacherHome />} />
             <Route path="/getDetails" element={<GetDetailsPage />} />
             <Route path="/instructors" element={<Details />} />
+            <Route path="/studentint" element={<StudentInterface/>}/>
+            <Route path="/studentresult" element={<StudentSummary/>}/>
           </Routes>
         </Router>
       </div>

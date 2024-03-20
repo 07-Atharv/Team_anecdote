@@ -9,6 +9,7 @@ import instant from "../../assets/instant.svg";
 import secure from "../../assets/secure.svg";
 import UI from "../../assets/UI.svg";
 import logo from "../../assets/image-r.png";
+
 const LandingPage = () => {
   const navigate = useNavigate();
 
@@ -20,16 +21,16 @@ const LandingPage = () => {
       <div className=" flex justify-center  w-5/6 mx-auto  ">
         <div className="w-1/2 ">
           <div>
-            <h1 className="text-6xl my-10 font-serif">ScoreCraft</h1>
+            <h1 className="text-9xl my-3 font-serif">ScoreCraft</h1>
           </div>
           <div>
-            <h3 className="text-2xl my-10 font-sans mt-4">
-              Unlock Your Academic Potential with ScoreCraft : Where Excellence
+            <h3 className=" text-2xl my-10 font-sans mt-4">
+              Unlock Your Academic Potential with ScoreCraft : <br /> Where Excellence
               Meets Assessment!!!
             </h3>
           </div>
           <div>
-            <h1 className=" mt-20">
+            <h1 className=" mt-10 text-1xl font-roman ">
               Explore MCQ’s , delve into textual wonders, decode visual puzzles
               ,<br></br>
               and unleash code mastery. Experience diverse question formats for
@@ -40,14 +41,21 @@ const LandingPage = () => {
           </div>
         </div>
         <div className="w-1/2 flex justify-start  items-center">
-          <img src={landingImage} alt="Langing illustration"></img>
+          <img src={landingImage} alt="Langing illustration" ></img>
         </div>
       </div>
+      <div className="w-1/2 p-4 px-32 mb-10 flex items-center"> {/* Added flex and items-center */}
+    <p className="text-black text-lg mb-1 font-sans mr-4">Are You a Student?</p> {/* Added mr-4 for margin-right */}
+    <button className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-md shadow-md transition duration-300 transform hover:scale-105">Log in for a student</button>
+</div>
+
+
+
       <h1 className="text-4xl font-semibold	text-center mt-60">
         What’s New Here ?
       </h1>
       <div class="w-5/6 my-10 mx-auto grid grid-cols-3 gap-4">
-        <div className="p-2 text-center  justify-center shadow-xl my-2 bg-gradient-to-b from-white to-blue-200 px-5 py-5 text-2xl border rounded-xl ">
+        <div className="p-2 text-center  justify-center shadow-xl my-2 bg-gradient-to-b from-white to-blue-200 px-5 py-5 text-2xl border rounded-xl transform transition duration-300 hover:scale-105">
           <div className="w-full flex justify-center">
             <img src={check} className="w-1/3" alt=""></img>
           </div>
@@ -58,7 +66,7 @@ const LandingPage = () => {
             types for customized assessment
           </p>
         </div>
-        <div className="p-2 text-center  justify-center shadow-xl my-2 bg-gradient-to-b from-white to-blue-200 px-5 py-5 text-2xl border rounded-xl ">
+        <div className="p-2 text-center  justify-center shadow-xl my-2 bg-gradient-to-b from-white to-blue-200 px-5 py-5 text-2xl border rounded-xl transform transition duration-300 hover:scale-105 ">
           <div className="w-full flex justify-center">
             <img src={ai} className="w-1/3" alt=""></img>
           </div>
@@ -69,7 +77,7 @@ const LandingPage = () => {
             flags cheating in real time{" "}
           </p>
         </div>
-        <div className="p-2 text-center  justify-center shadow-xl my-2 bg-gradient-to-b from-white to-blue-200 px-5 py-5 text-2xl border rounded-xl ">
+        <div className="p-2 text-center  justify-center shadow-xl my-2 bg-gradient-to-b from-white to-blue-200 px-5 py-5 text-2xl border rounded-xl transform transition duration-300 hover:scale-105 ">
           <div className="w-full flex justify-center">
             <img src={instant} className="w-1/3" alt=""></img>
           </div>
@@ -79,7 +87,7 @@ const LandingPage = () => {
             evaluation
           </p>
         </div>
-        <div className="p-2 text-center  justify-center shadow-xl my-2 bg-gradient-to-b from-white to-blue-200 px-5 py-5 text-2xl border rounded-xl ">
+        <div className="p-2 text-center  justify-center shadow-xl my-2 bg-gradient-to-b from-white to-blue-200 px-5 py-5 text-2xl border rounded-xl transform transition duration-300 hover:scale-105 ">
           <div className="w-full flex justify-center">
             <img src={secure} className="w-1/3" alt=""></img>
           </div>
@@ -90,7 +98,7 @@ const LandingPage = () => {
           </p>
         </div>
 
-        <div className="p-2 text-center  justify-center shadow-xl my-2 bg-gradient-to-b from-white to-blue-200 px-5 py-5 text-2xl border rounded-xl ">
+        <div className="p-2 text-center  justify-center shadow-xl my-2 bg-gradient-to-b from-white to-blue-200 px-5 py-5 text-2xl border rounded-xl transform transition duration-300 hover:scale-105 ">
           <div className="w-full flex justify-center">
             <img src={UI} className="w-1/3" alt=""></img>
           </div>
@@ -101,7 +109,7 @@ const LandingPage = () => {
           </p>
         </div>
 
-        <div className="p-2 text-center  justify-center shadow-xl my-2 bg-gradient-to-b from-white to-blue-200 px-5 py-5 text-2xl border rounded-xl ">
+        <div className="p-2 text-center  justify-center shadow-xl my-2 bg-gradient-to-b from-white to-blue-200 px-5 py-5 text-2xl border rounded-xl transform transition duration-300 hover:scale-105 ">
           <div className="w-full flex justify-center">
             <img src={authentication} className="w-1/3" alt=""></img>
           </div>

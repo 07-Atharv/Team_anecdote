@@ -39,7 +39,7 @@ function Navbar() {
 
                   () => navigate("/signup")
                 }
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-6"
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-6 transition duration-300 ease-in-out transform hover:scale-105 "
               >
                 Sign Up
               </button>
@@ -51,8 +51,8 @@ function Navbar() {
               <button
                 type="button"
                 onClick={() => navigate("/signin")}
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center ml-2"
-              >
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center ml-2 transition duration-300 ease-in-out transform hover:scale-105 "
+                >
                 Sign In
               </button>
             ) : (
