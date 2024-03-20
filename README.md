@@ -22,6 +22,9 @@ Your journey to academic excellence starts here.
 * Instant Results
 * Multile Question formats
 * Code-Upload and Image-upload Functionality
+* Automatic Question Generation using Natrual Langauage Processing
+* Dynamic Question Pooling 
+
 
 
 # Modules
