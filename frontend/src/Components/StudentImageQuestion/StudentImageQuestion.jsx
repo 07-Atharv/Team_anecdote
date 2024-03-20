@@ -3,16 +3,20 @@ import UploadWidget from "../ImageAnswer/UploadWidget";
 import TextAnswer from "../textAnswer";
 import CodeAnswer from "../codeAnswer";
 import StudentMCQAnswer from "../StudentMCQAnswer/StudentMCQAnswer";
+import StudentCheckAnswer from "../StudentCheckAnswer/StudentCheckAnswer";
 
 const StudentImageQuestion = (props) => {
   let options = [];
+  const {handleAnswerChange} = props
 
-  if (props.question.anstype == "mcq") {
+  if (props.question.anstype == "mcq" ||props.question.anstype === "check") {
     options = props.question.options;
     console.log(options);
   }
 
   console.log( props.question.qimg );
+
+  const {index,answers } = props
   
   return (
     <div>
@@ -29,15 +33,16 @@ const StudentImageQuestion = (props) => {
 
         <div className="flex flex-row justify-start gap-x-12 w-full mt-8 mx-auto">
           {props.question.anstype == "text" ? (
-            <TextAnswer disabled={false} />
+            <TextAnswer disabled={false}   answers={answers}handleAnswerChange={handleAnswerChange}  index={index}/>
           ) : (
             ""
           )}
 
-          {props.question.anstype == "code" ? <CodeAnswer /> : ""}
+          {props.question.anstype == "code" ? <CodeAnswer  answers={answers} handleAnswerChange={handleAnswerChange} index={index}  /> : ""}
+          {props.question.anstype == "check" ? <StudentCheckAnswer answers={answers} handleAnswerChange={handleAnswerChange}  index={index} options={options} /> : ""}
 
-          {props.question.anstype == "mcq" || true ? (
-            <StudentMCQAnswer options={options} />
+          {props.question.anstype == "mcq" ? (
+            <StudentMCQAnswer index={index} handleAnswerChange={handleAnswerChange}  answers={answers} options={options} />
           ) : (
             ""
           )}

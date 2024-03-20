@@ -3,9 +3,10 @@ import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import LanguageSelector from "../LanuageSelector/LanguageSelector";
 import { CODE_SNIPPETS } from "../../constants";
 
-const CodeAnswer = () => {
+const CodeAnswer = (props) => {
   const editorRef = useRef;
-
+  const {index} = props
+  const {handleAnswerChange} = props
   const onSelect = (lang) => {
     setLanguage(lang);
     setCodeQuestion(CODE_SNIPPETS[lang]);
