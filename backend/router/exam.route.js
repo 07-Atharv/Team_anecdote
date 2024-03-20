@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Exam = require("../models/exam.model")
 const { bypass, verifyTeacher } = require("../middleware/api.middleware");
+const Submission = require("../models/submission.model");
 router.get("/", bypass, (req, res) => {
   res.send("Hello Exam");
 });
@@ -96,6 +97,35 @@ router.post("/getone", bypass, async (req, res) => {
   try {
     const { id } = req.body;
     
+
+    const exam  = await Exam.findOne({_id:id})
+
+    if(!exam){
+
+      return res
+      .status(400)
+      .json({ success: 0, message: "NO Exam Found!" });
+    }
+    res
+      .status(201)
+      .json({ success: 1, message: "Exam retrieved", exam });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: 0, message: "Internal Server Error" });
+  }
+});
+
+router.post("/getbystudent", bypass, async (req, res) => {
+  try {
+    const { id,email,name } = req.body;
+    
+    const submission = await Submission.findOne({examId : id, studentEmail : email})
+
+    if(submission){
+      return res
+      .status(400)
+      .json({ success: 0, message: "Exam already given" });
+    }
 
     const exam  = await Exam.findOne({_id:id})
 

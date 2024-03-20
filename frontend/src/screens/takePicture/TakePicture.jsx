@@ -154,6 +154,19 @@ React.useEffect(() => {
       </div>
       <div className="flex flex-col w-[50%] p-8 border border-slate-100 rounded-xl justify-start items-center">
         <h1 className="font-bold text-2xl">General Instructions</h1>
+        <div class="p-4 bg-gray-100 rounded-lg shadow-md">
+    <ol class="list-decimal list-inside">
+        <li class="mb-2">Read the exam instructions carefully.</li>
+        <li class="mb-2">Ensure you have all the necessary materials, such as pens, pencils, and scratch paper.</li>
+        <li class="mb-2">Find a quiet and well-lit space to take the exam.</li>
+        <li class="mb-2">Log in to the exam platform using the provided credentials.</li>
+        <li class="mb-2">Follow the on-screen instructions to start the exam.</li>
+        <li class="mb-2">Answer each question to the best of your ability.</li>
+        <li class="mb-2">Double-check your answers before submitting the exam.</li>
+        <li>Submit the exam before the deadline.</li>
+    </ol>
+</div>
+
         <div className="flex flex-col justify-end items-end grow">
           {startFace && (
             <button
