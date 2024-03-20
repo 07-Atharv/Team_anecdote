@@ -77,6 +77,12 @@ router.get("/getone", bypass, async (req, res) => {
 
     const exam  = await Exam.findOne({_id:id})
 
+    if(!exam){
+
+      return res
+      .status(400)
+      .json({ success: 0, message: "NO Exam Found!" });
+    }
     res
       .status(201)
       .json({ success: 1, message: "Exam retrieved", exam });
@@ -93,6 +99,12 @@ router.post("/getone", bypass, async (req, res) => {
 
     const exam  = await Exam.findOne({_id:id})
 
+    if(!exam){
+
+      return res
+      .status(400)
+      .json({ success: 0, message: "NO Exam Found!" });
+    }
     res
       .status(201)
       .json({ success: 1, message: "Exam retrieved", exam });

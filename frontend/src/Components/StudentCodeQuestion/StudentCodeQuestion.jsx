@@ -6,8 +6,13 @@ import { CODE_SNIPPETS } from "../../constants";
 import TextAnswer from "../textAnswer";
 import CodeAnswer from "../codeAnswer";
 import StudentMCQAnswer from "../StudentMCQAnswer/StudentMCQAnswer";
+import StudentCheckAnswer from "../StudentCheckAnswer/StudentCheckAnswer";
 
 const StudentCodeQuestion = (props) => {
+
+  const {index,answers } = props
+  const {handleAnswerChange} = props
+
   const [language, setLanguage] = useState("javascript");
   const editorRef = useRef;
 
@@ -22,7 +27,7 @@ const StudentCodeQuestion = (props) => {
   const [codeQuestion, setCodeQuestion] = useState("");
   let options = [];
 
-  if (props.question.anstype == "mcq") {
+  if (props.question.anstype == "mcq" || props.question.anstype === "check") {
     options = props.question.options;
     console.log(options);
   }
@@ -62,15 +67,16 @@ const StudentCodeQuestion = (props) => {
 
         <div className="flex flex-row justify-start gap-x-12 w-full mx-auto">
           {props.question.anstype == "text" ? (
-            <TextAnswer disabled={false} />
+            <TextAnswer answers={answers} index={index} handleAnswerChange={handleAnswerChange} disabled={false} />
           ) : (
             ""
           )}
 
-          {props.question.anstype == "code" ? <CodeAnswer /> : ""}
+          {props.question.anstype == "code" ? <CodeAnswer answers={answers} handleAnswerChange={handleAnswerChange}  index={index}  /> : ""}
+          {props.question.anstype == "check" ? <StudentCheckAnswer answers={answers} handleAnswerChange={handleAnswerChange} index={index}  options={options} /> : ""}
 
           {props.question.anstype == "mcq" || true ? (
-            <StudentMCQAnswer options={options} />
+            <StudentMCQAnswer answers={answers}   index={index} handleAnswerChange={handleAnswerChange} options={options} />
           ) : (
             ""
           )}

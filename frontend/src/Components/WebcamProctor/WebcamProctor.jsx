@@ -119,7 +119,7 @@ function App() {
   };
 
   return (
-    <div onCopy={handleCopy} onPaste={handlePaste}>
+    <div className="" onCopy={handleCopy} onPaste={handlePaste}>
       <Webcam className="" audio={false} ref={webcamRef} />
       {/* <button onClick={captureStartFace}>Capture Start Face</button>
       <p>{msg}</p> */}

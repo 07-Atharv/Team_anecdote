@@ -6,6 +6,20 @@ import { useNavigate } from "react-router-dom";
 const OG_FACE = "examinee";
 
 function App() {
+  // document.body.requestFullscreen();
+  const [isFullscreen, setIsFullscreen] = React.useState(false);
+
+// Watch for fullscreenchange
+React.useEffect(() => {
+  function onFullscreenChange() {
+    setIsFullscreen(Boolean(document.fullscreenElement));
+  }
+        
+  document.addEventListener('fullscreenchange', onFullscreenChange);
+
+  return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
+}, []); 
+
   window.oncontextmenu = () => {
     // alert('No way!!!');
     return false;

@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/teacher', require("./router/teacher.route"))
 app.use('/api/exam', require("./router/exam.route"))
+app.use('/api/submission', require("./router/submission.route"))
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)

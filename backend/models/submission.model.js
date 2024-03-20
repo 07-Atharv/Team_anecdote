@@ -9,13 +9,11 @@ const answerSchema = new Schema({
   anstype:{
     type: String,
     enum: ["text", "mcq", "code", "check"],
-    required: true,
   },
   answer: [
     {
       type: String,
-      required: true,
-    },
+    }
   ],
 });
 
