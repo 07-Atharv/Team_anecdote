@@ -69,8 +69,12 @@ const StudentTest = () => {
 
   const navigate = useNavigate();
   const handleSubmission = async (e) => {
-    if( e == true ) {
+    if (e == true) {
       e.preventDefault();
+    }
+
+    if( state.preview == true ) {
+      return;
     }
 
     console.log("solution submitted");
@@ -165,7 +169,7 @@ const StudentTest = () => {
                   toggleFullScreen();
                   setWarningsCount(warningsCount + 1);
                   setfullScreenAlert(false);
-                  console.log( warningsCount );
+                  console.log(warningsCount);
                   if (warningsCount > 4) {
                     handleSubmission(false);
                   }
@@ -185,10 +189,14 @@ const StudentTest = () => {
             <WebcamProctor
               className=" absolute  bg-red"
               handleTabSwitch={() => {
-                setTabAlert(true);
+                if (state.preview == false) {
+                  setTabAlert(true);
+                }
               }}
               handleFullScreen={() => {
-                setfullScreenAlert(true);
+                if (state.preview == false) {
+                  setfullScreenAlert(true);
+                }
               }}
             />
             <div className="p-5 text-left">
