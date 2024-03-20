@@ -141,11 +141,11 @@ router.post("/getbystudent", bypass, async (req, res) => {
       .json({ success: 0, message: "NO Exam Found!" });
     }
 
-    if(exam.questions.length > 10){
-      const random = getRandomElements(exam.questions,10)
-      console.log(random)
-      exam.questions = random
-    }
+    // if(exam.questions.length > 10){
+    //   const random = getRandomElements(exam.questions,10)
+    //   console.log(random)
+    //   exam.questions = random
+    // }
 
 
 
