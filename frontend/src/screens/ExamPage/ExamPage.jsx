@@ -163,24 +163,39 @@ const ExamPage = () => {
     setQuestions(updatedQuestions);
   };
 
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300 ) {
-      console.log( "now" );
-    }
-  });
-  useEffect(() => {
-    
-  }, []);
-
+  console.log( questions );
+  
   return (
-    <>
-      <LoggedNav />
-
+    <div className="main-container h-[100vh] overflow-hidden">
+      <LoggedNav show={false}/>
       <div className="flex flex-row">
         <div className="h-[100vh] w-[17%] ">
-          <div className="fixed h-[100vh] w-[17%] border border-slate-200 rounded-md"></div>
+          <div className="fixed h-[100vh] -translate-y-[7vh]  w-[17%] border border-slate-100 rounded-md">
+            <div className="flex flex-col mt-[7vh] h-[100vh] p-6">
+              <h1 className="font-bold text-2xl">Tools</h1>
+
+              <button
+                onClick={handleAddQuestion}
+                className="flex flex-row items-center justify-center w-full border border-2 border-blue-700 text-black font-bold p-5 text-md hover:bg-blue-700 hover:text-white transition duration-300 hover:scale-[102%] rounded-xl my-4">
+                <i class="bx bx-plus pr-1"></i>
+                <p>Add Question</p>
+              </button>
+
+              <div className="flex flex-col grow justify-end mb-[7vh]">
+                <button
+                  onClick={() => {
+                    navigate("/studentTest", {
+                      state: { test_id: examid, questions: questions },
+                    });
+                  }}
+                  className="flex flex-row items-center justify-center w-full border border-2 border-blue-700 text-black font-bold p-5 text-md hover:bg-blue-700 hover:text-white transition duration-300 hover:scale-[102%] rounded-xl my-2">
+                  <p>Preview Test </p>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="grow">
+        <div className="grow overflow-scroll h-[100vh] ">
           <form onSubmit={handleSubmit}>
             <div className="w-[90%] mx-auto  my-10 ">
               <div className="exam-container p-8 grow">
@@ -253,25 +268,29 @@ const ExamPage = () => {
                   })}
                 </div>
               </div>
-              <button
-                style={{
-                  backgroundColor:
-                    questions && questions.length > 0 ? "" : "#cccccc",
-                  cursor:
-                    questions && questions.length > 0
-                      ? "pointer"
-                      : "not-allowed",
-                }}
-                type="submit"
-                className="bg-green-600 px-5 py-2 font-bold text-white rounded shadow m-5"
-                disabled={!questions || questions.length === 0}>
-                Submit
-              </button>{" "}
+              <div className="flex flex-row mx-4 justify-end">
+                <button
+                  style={{
+                    backgroundColor:
+                      questions && questions.length > 0 ? "" : "#cccccc",
+                    cursor:
+                      questions && questions.length > 0
+                        ? "pointer"
+                        : "not-allowed",
+                  }}
+                  type="submit"
+                  className="bg-green-600 px-10 py-3 text-xl font-bold text-white rounded shadow m-5"
+                  disabled={!questions || questions.length === 0}>
+                  Save
+                </button>
+              </div>
+
+              <div className="h-32"></div>
             </div>
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

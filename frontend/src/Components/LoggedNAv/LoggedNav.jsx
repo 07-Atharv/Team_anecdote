@@ -2,7 +2,7 @@ import React from "react";
 import { LOGGED_IN, TOKEN, USERDATA, USERD_KEYS } from "../../constants";
 import { useNavigate } from "react-router-dom";
 
-function LoggedNav() {
+function LoggedNav( props ) {
   const user = JSON.parse(localStorage.getItem(USERDATA));
   const navigate = useNavigate();
   const LogOut = () => {
@@ -13,22 +13,28 @@ function LoggedNav() {
   };
   //console.log(user)
   return (
-    <div className=" w-full border">
-      <div className="w-full my-5 flex justify-between items-center  mx-auto">
-        <h1 className="text-3xl font-bold ml-[3%]">
-          Welcome, {user[USERD_KEYS.NAME]}!
-        </h1>
-        <div className="flex mr-[2%]">
-          <button
-            className="px-8 mr-10 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 transition duration-500"
-            type="button"
-            onClick={LogOut}>
-            Log Out
-          </button>
-          <img
-            src={user[USERD_KEYS.PROFILE_URL]}
-            style={{ borderRadius: "50%", width: "60px" }}
-            alt=""></img>
+    <div className="stacked-container">
+      <div className="relative w-full border z-10 bg-white">
+        <div className="w-full my-2 py-1 flex justify-between items-center  mx-auto">
+          <div className="flex items-center ml-[2%] grow">
+            <img
+              src={user[USERD_KEYS.PROFILE_URL]}
+              className="w-[50px] rounded-full mr-4"
+              alt=""
+            />
+            <h1 className="text-2xl font-bold">
+              Welcome, {user[USERD_KEYS.NAME]}!
+            </h1>
+          </div>
+
+          { props.show ? <div className="flex items-center mr-[1%]">
+            <button
+              className="h-[50px] px-8 mr-10 py-0 bg-red-500 text-white text-sm font-bold rounded-xl hover:bg-red-600 transition duration-500"
+              type="button"
+              onClick={LogOut}>
+              Log Out
+            </button>
+          </div> : <div className=""></div> }
         </div>
       </div>
     </div>
