@@ -2,13 +2,15 @@ import graduation from "../../assets/graduation.svg"
 import scoreCraftLogo from "../../assets/scorecraftlogo.png"
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
-import React from "react";
+import React, { useState } from "react";
 import { BASEURL, GOOGLE_API_BASE, LOGGED_IN, TOKEN } from "../../constants";
 import { useNavigate } from "react-router-dom";
 
 const StudentInterface = () => {
 const navigate = useNavigate()
 
+    const [name,setName] = useState("")
+    const [email,setEmail] = useState("")
 
 
   const handleLogin = useGoogleLogin({
@@ -90,10 +92,10 @@ const navigate = useNavigate()
 
              <form className="w-5/6 mx-auto" >
 
-              <input type="text" className="w-full border rounded-xl my-2 " placeholder="Student Name"/>
+              <input type="text" value={name} className="w-full border rounded-xl my-2 " onChange={(e)=>{setName(e.target.value)}} placeholder="Student Name"/>
               
-              <input type="email" className="w-full border rounded-xl my-2 " placeholder="Student Email"/>
-              <button className="bg-blue-600 w-full my-5 mx-auto p-2 rounded-xl text-white text-center">Verify Now</button>
+              <input type="email" value={email} className="w-full border rounded-xl my-2 " onChange={(e)=>{setEmail(e.target.value)}} placeholder="Student Email"/>
+              <button className="bg-blue-600 w-full my-5 mx-auto p-2 rounded-xl text-white text-center" onClick={(e)=>{navigate("/studentres",{state:{email:email}})}}>Verify Now</button>
              </form>
             
             </div>

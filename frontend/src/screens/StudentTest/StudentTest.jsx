@@ -79,7 +79,7 @@ const StudentTest = () => {
 
     if (res.success === 1) {
       alert("Submission Successfull");
-      navigate("/");
+      navigate("/studentres",{state : {email : studentEmail}});
       return;
     }
     alert("Error in submission");

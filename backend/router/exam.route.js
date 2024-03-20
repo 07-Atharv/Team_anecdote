@@ -7,30 +7,23 @@ router.get("/", bypass, (req, res) => {
   res.send("Hello Exam");
 });
 
-// router.post("/create", verifyTeacher, async (req, res) => {
-//   try {
-//     const { examid, title, description, questions } = req.body;
-    
-//     // Create a new exam
-//     console.log(req.teacher)
-//     const exam = new Exam({
-//       title,
-//       description,
-//       creator: req.teacher._id,
-//       questions,
-//     });
 
-//     // Save the exam to the database
-//     await exam.save();
+router.post("/getres",bypass,async(req,res)=>{
+ try {
+  const {email } = req.body;
+  console.log(req.body)
+  const exams = await Submission.find({studentEmail : email})
+  console.log(exams)
+  return res.status(201)
+        .json({ success: 1, message: "retrieved", exams });
+ } catch (error) {
+  console.log(error)
+  res
+        .status(500)
+        .json({ success: 0, message: "Internal Server Error" });
+ }
 
-//     res
-//       .status(201)
-//       .json({ success: 1, message: "Exam created successfully", exam });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ success: 0, message: "Internal Server Error" });
-//   }
-// });
+})
 
 
 router.post("/create", verifyTeacher, async (req, res) => {

@@ -46,7 +46,7 @@ const LandingPage = () => {
       </div>
       <div className="w-1/2 p-4 px-32 mb-10 flex items-center"> {/* Added flex and items-center */}
     <p className="text-black text-lg mb-1 font-sans mr-4">Are You a Student?</p> {/* Added mr-4 for margin-right */}
-    <button className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-md shadow-md transition duration-300 transform hover:scale-105">Log in for a student</button>
+    <a target="_blank" href="/studentint" className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-md shadow-md transition duration-300 transform hover:scale-105">Log in for a student</a>
 </div>
 
 
