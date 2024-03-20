@@ -137,6 +137,7 @@ const StudentTest = () => {
   console.log(answers)
 
   const handleAnswerChange = (index, value) => {
+    console.log("Vaue REceive to answerChange :" , value)
     const newAnswers = [...answers]
     if (questions[index].anstype === 'text') {
       newAnswers[index].anstype = questions[index].anstype
@@ -147,6 +148,10 @@ const StudentTest = () => {
       newAnswers[index].questionId = questions[index]._id
       newAnswers[index].answer[0] = value;
     } else if (questions[index].anstype === 'check') {
+      newAnswers[index].anstype = questions[index].anstype
+      newAnswers[index].questionId = questions[index]._id
+      newAnswers[index].answer = value;
+    }else if (questions[index].anstype === 'code') {
       newAnswers[index].anstype = questions[index].anstype
       newAnswers[index].questionId = questions[index]._id
       newAnswers[index].answer = value;
