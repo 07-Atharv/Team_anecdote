@@ -6,6 +6,20 @@ import { useNavigate } from "react-router-dom";
 const OG_FACE = "examinee";
 
 function App() {
+  // document.body.requestFullscreen();
+  const [isFullscreen, setIsFullscreen] = React.useState(false);
+
+// Watch for fullscreenchange
+React.useEffect(() => {
+  function onFullscreenChange() {
+    setIsFullscreen(Boolean(document.fullscreenElement));
+  }
+        
+  document.addEventListener('fullscreenchange', onFullscreenChange);
+
+  return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
+}, []); 
+
   window.oncontextmenu = () => {
     // alert('No way!!!');
     return false;
@@ -117,22 +131,55 @@ function App() {
     // console.log(res)
   };
 
-
-  const navigator = useNavigate()
+  const navigator = useNavigate();
   return (
-   <div className="w-full">
-     <div className="w-1/2 mt-20 justify-center mx-auto" onCopy={handleCopy} onPaste={handlePaste}>
-      <Webcam className="w-1/2 " audio={false} ref={webcamRef} />
-      
+    <div className="flex flex-row">
+      <div className="w-[40%] p-10 flex flex-col items-center">
+        <h1 className="text-3xl font-bold">
+          Capture Your Face to start the Assesment
+        </h1>
+        <div className="flex flex-col items-center gap-y-4 mt-10" onCopy={handleCopy} onPaste={handlePaste}>
+          <Webcam className="w-[70%]" audio={false} ref={webcamRef} />
 
-      <button className="bg-green-600 mx-10  mx-auto  text-white rounded-xl  p-4" onClick={captureStartFace}>Capture Start Face</button>
-      {startFace  && <button  className="mx-auto p-5 text-white bg-green-700" onClick={()=>{
-        navigator("/testId")
-        }}>Continue</button>}
-      {startFace && <img src={startFace} className=" w-1/2" alt="start-face" />} 
+          <button
+            className="bg-green-600 mx-10  mx-auto  text-white rounded-xl  p-4"
+            onClick={captureStartFace}>
+            Capture Start Face
+          </button>
+
+          {startFace && (
+            <img src={startFace} className=" w-[70%]" alt="start-face" />
+          )}
+        </div>
+      </div>
+      <div className="flex flex-col w-[50%] p-8 border border-slate-100 rounded-xl justify-start items-center">
+        <h1 className="font-bold text-2xl">General Instructions</h1>
+        <div class="p-4 bg-gray-100 rounded-lg shadow-md">
+    <ol class="list-decimal list-inside">
+        <li class="mb-2">Read the exam instructions carefully.</li>
+        <li class="mb-2">Ensure you have all the necessary materials, such as pens, pencils, and scratch paper.</li>
+        <li class="mb-2">Find a quiet and well-lit space to take the exam.</li>
+        <li class="mb-2">Log in to the exam platform using the provided credentials.</li>
+        <li class="mb-2">Follow the on-screen instructions to start the exam.</li>
+        <li class="mb-2">Answer each question to the best of your ability.</li>
+        <li class="mb-2">Double-check your answers before submitting the exam.</li>
+        <li>Submit the exam before the deadline.</li>
+    </ol>
+</div>
+
+        <div className="flex flex-col justify-end items-end grow">
+          {startFace && (
+            <button
+              className="bg-green-600 mx-10  mx-auto text-white rounded-xl  p-4"
+              onClick={() => {
+                navigator("/testId");
+              }}>
+              Continue
+            </button>
+          )}
+        </div>
+      </div>
     </div>
-   
-   </div>
   );
 }
 
