@@ -36,10 +36,11 @@ const StudentTest = () => {
   console.log(answers);
 
   const handleAnswerChange = (index, value) => {
-    const newAnswers = [...answers];
-    if (questions[index].anstype === "text") {
-      newAnswers[index].anstype = questions[index].anstype;
-      newAnswers[index].questionId = questions[index]._id;
+    console.log("Vaue REceive to answerChange :" , value)
+    const newAnswers = [...answers]
+    if (questions[index].anstype === 'text') {
+      newAnswers[index].anstype = questions[index].anstype
+      newAnswers[index].questionId = questions[index]._id
       newAnswers[index].answer[0] = value;
     } else if (questions[index].anstype === "mcq") {
       newAnswers[index].anstype = questions[index].anstype;
@@ -48,6 +49,10 @@ const StudentTest = () => {
     } else if (questions[index].anstype === "check") {
       newAnswers[index].anstype = questions[index].anstype;
       newAnswers[index].questionId = questions[index]._id;
+      newAnswers[index].answer = value;
+    }else if (questions[index].anstype === 'code') {
+      newAnswers[index].anstype = questions[index].anstype
+      newAnswers[index].questionId = questions[index]._id
       newAnswers[index].answer = value;
     }
 
@@ -59,6 +64,8 @@ const StudentTest = () => {
   const handleSubmission = async (e) => {
     e.preventDefault();
 
+    console.log("solution submitted")
+
     // console.log({examId,studentName,studentEmail,answers})
     let res = await fetch(BASEURL + "/api/submission/submit", {
       method: "POST",
@@ -69,8 +76,6 @@ const StudentTest = () => {
     });
 
     res = await res.json();
-
-    console.log(res);
 
     if (res.success === 1) {
       alert("Submission Successfull");

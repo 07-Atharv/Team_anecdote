@@ -4,8 +4,8 @@ import StudentImageQuestion from "../StudentImageQuestion";
 import StudentCodeQuestion from "../StudentCodeQuestion/StudentCodeQuestion";
 
 const StudentQuestion = (props) => {
-  console.log(props.question)
-  console.log(props.question.qtype);
+  // console.log(props.question)
+  // console.log(props.question.qtype);
   const {handleAnswerChange,answers } = props
 
 
