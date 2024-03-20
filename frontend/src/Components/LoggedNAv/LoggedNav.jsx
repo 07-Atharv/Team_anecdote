@@ -18,7 +18,7 @@ function LoggedNav( props ) {
         <div className="w-full my-2 py-1 flex justify-between items-center  mx-auto">
           <div className="flex items-center ml-[2%] grow">
             <img
-              src={user[USERD_KEYS.PROFILE_URL]}
+              src={ user[USERD_KEYS.PROFILE_URL] ? user[USERD_KEYS.PROFILE_URL] : "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"}
               className="w-[50px] rounded-full mr-4"
               alt=""
             />
