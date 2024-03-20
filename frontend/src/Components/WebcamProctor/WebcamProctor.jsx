@@ -105,16 +105,16 @@ function App(props) {
       );
 
     // Send base64 image to Flask backend
-    // let res = await fetch("http://localhost:5000/upload_image", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ current: base64Image, examinee: localStorage.getItem(OG_FACE) }),
-    // });
+    let res = await fetch("http://localhost:5000/upload_image", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ current: base64Image, start: localStorage.getItem(OG_FACE) }),
+    });
 
-    // res = await res.json()
-    // console.log(res)
+    res = await res.json()
+    console.log(res)
   };
 
   return (

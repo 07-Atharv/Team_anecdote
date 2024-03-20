@@ -14,8 +14,13 @@ router.post("/getres",bypass,async(req,res)=>{
   console.log(req.body)
   const exams = await Submission.find({studentEmail : email})
   console.log(exams)
+  let examDets = []
+  for( let i =0;i<exams.length;i++){
+    const examDet =  await Exam.findById(exams[i].examId)
+    examDets.push(examDet)
+  }
   return res.status(201)
-        .json({ success: 1, message: "retrieved", exams });
+        .json({ success: 1, message: "retrieved", exams ,examDets});
  } catch (error) {
   console.log(error)
   res
@@ -141,11 +146,11 @@ router.post("/getbystudent", bypass, async (req, res) => {
       .json({ success: 0, message: "NO Exam Found!" });
     }
 
-    // if(exam.questions.length > 10){
-    //   const random = getRandomElements(exam.questions,10)
-    //   console.log(random)
-    //   exam.questions = random
-    // }
+    if(exam.questions.length > 8){
+      const random = getRandomElements(exam.questions,10)
+      console.log(random)
+      exam.questions = random
+    }
 
 
 
