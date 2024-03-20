@@ -10,7 +10,7 @@ const MCQOption = (props) => {
   const {answers,index,handleAnswerChange} = props
 
   return (
-    <div>
+    <div className="w-[50%]">
       <fieldset className="flex max-w-md flex-col gap-4">
         <div className="flex items-center gap-2 px-2 py-2 rounded-xl border border-slate-200 my-2">
           {isStudent ? (

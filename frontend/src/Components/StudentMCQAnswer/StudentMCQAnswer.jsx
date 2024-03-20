@@ -8,7 +8,7 @@ const StudentMCQAnswer = (props) => {
   console.log(options);
 
   return (
-    <div>
+    <div className="flex flex-row flex-wrap w-[100%]">
       {options.map((option) => {
         return <MCQOption index={index} handleAnswerChange={handleAnswerChange} answers={answers} student={true}  option={option}></MCQOption>;
       })}

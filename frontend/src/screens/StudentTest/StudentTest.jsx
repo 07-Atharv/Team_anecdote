@@ -101,6 +101,7 @@ const StudentTest = () => {
           <form
             onSubmit={handleSubmission}
             className="z-100 main-container w-5/6  mx-auto">
+
             {currentTime}
 
             <div className="m-5 question-hold-container rounded-xl border border-slate-300 w-5/6 mx-auto">
@@ -130,7 +131,7 @@ const StudentTest = () => {
               )}
               {index == questions.length - 1 ? (
                 <button
-                  type="button"
+                  type="submit"
                   disabled={index != questions.length - 1}
                   class="w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none dark:focus:ring-blue-800">
                   Submit
@@ -138,7 +139,8 @@ const StudentTest = () => {
               ) : (
                 <button
                   type="button"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     if (index + 1 == questions.length) {
                     } else {
                       setIndex(index + 1);
