@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import StudentQuestion from "../../Components/StudentQuestion/StudentQuestion";
 import WebcamProctor from "../../Components/WebcamProctor/WebcamProctor";
+import { FACE_START } from "../../constants";
+import Webcam from "react-webcam";
 
 const dummyData = [
   {
@@ -115,18 +117,97 @@ const dummyData = [
 const StudentTest = () => {
   const { state } = useLocation();
   const [index, setIndex] = React.useState(0);
+  const [match,setMatch] = useState("")
   // const questions = dummyData[0].questions;
   const questions = state.questions;
   console.log( questions );
 
+
+
+  const webcamRef = useRef(null);
+
+  const checkTabVisibility = () => {
+    if (document.hidden) {
+      // User has changed or exited the current tab
+      console.log('User changed or exited tab');
+      alert('User changed or exited tab')
+      // You can add your logic here, such as alerting the proctor
+    } else if (!document.hasFocus()) {
+      // Another software is opened
+      console.log('Another software is opened');
+      alert("Another software is opened")
+      // You can add your logic here, such as alerting the proctor
+    }
+    else if (!window.screenTop && !window.screenY ) {
+      // User has switched to fullscreen mode
+      console.log('User is not fullscreen mode');
+     alert('User is not fullscreen mode');
+      
+      // You can add your logic here, such as alerting the proctor
+    }
+    else {
+      console.log('User is active on the exam tab');
+      // alert('User is active on the exam tab');
+    }
+  };
+
+
+
+
+  const captureAndSendImage = async () => {
+    const imageSrc = webcamRef.current.getScreenshot();
+
+    
+    // Convert image to base64
+    const base64Image = await fetch(imageSrc)
+      .then((res) => res.blob())
+      .then(
+        (blob) =>
+          new Promise((resolve, _) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result);
+            reader.readAsDataURL(blob);
+          })
+      );
+
+    // Send base64 image to Flask backend
+    let res = await fetch("http://127.0.0.1:5000/upload_image", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ current: base64Image, examinee: localStorage.getItem(FACE_START) }),
+    });
+
+    res = await res.json()
+    console.log(res)
+    setMatch(res.message)
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      captureAndSendImage();
+      setTimeout(() => {
+          checkTabVisibility();
+      }, 1000); 
+  }, 2000);// Send image every 1 second
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }, []);
+
+
+
+
   return (
     <>
       <div className="flex flex-row">
-        <WebcamProctor className="absolute bg-red" />
+      <Webcam audio={false} ref={webcamRef} />
         <div className="z-100 main-container w-[95%] mx-auto">
           <div className="font-bold text-3xl p-12">
             {" "}
             Test Id: {state.test_id}
+            <br/>
+            {match}
           </div>
 
           <div className="question-hold-container rounded-xl border border-slate-300 w-[70%] mx-auto">
