@@ -27,7 +27,7 @@ function calculateSimilarity(teacherAnswer, studentAnswer) {
 
 
 const calculateScore =async (submission) =>{
-    console.log("Submission : ",submission)
+    // console.log("Submission : ",submission)
     let score = 0;
 
     // console.log()
