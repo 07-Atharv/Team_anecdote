@@ -6,7 +6,6 @@ const StudentCheckAnswer = (props) => {
   const {index,answers} = props
   const {handleAnswerChange} = props
   console.log("Checkbox options : ",options);
-  
 
   const [selected,setSelected] = React.useState(answers[index].answer)
 

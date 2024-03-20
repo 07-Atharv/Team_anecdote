@@ -221,7 +221,7 @@ const ExamPage = () => {
                 <button
                   onClick={() => {
                     navigate("/studentTest", {
-                      state: { data: { examId: examid, studentName: "Dummy", studentEmail: "Dummy" }, questions: questions },
+                      state: { data: { examId: examid, studentName: "Dummy", studentEmail: "Dummy", preview: true }, questions: questions },
                     });
                   }}
                   className="flex flex-row items-center justify-center w-full border border-2 border-blue-700 text-black font-bold p-5 text-md hover:bg-blue-700 hover:text-white transition duration-300 hover:scale-[102%] rounded-xl my-2">

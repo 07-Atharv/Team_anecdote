@@ -2,28 +2,57 @@ import React, { useRef, useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import { FACE_START } from "../../constants";
 import { useNavigate } from "react-router-dom";
+import { Modal } from "flowbite-react";
 
 const OG_FACE = "examinee";
 
 function App() {
-  // document.body.requestFullscreen();
   const [isFullscreen, setIsFullscreen] = React.useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
-// Watch for fullscreenchange
-React.useEffect(() => {
-  function onFullscreenChange() {
-    setIsFullscreen(Boolean(document.fullscreenElement));
-  }
-        
-  document.addEventListener('fullscreenchange', onFullscreenChange);
+  // Watch for fullscreenchange
+  React.useEffect(() => {
+    function onFullscreenChange() {
+      setIsFullscreen(Boolean(document.fullscreenElement));
+    }
 
-  return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
-}, []); 
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+
+    return () =>
+      document.removeEventListener("fullscreenchange", onFullscreenChange);
+  }, []);
 
   window.oncontextmenu = () => {
     // alert('No way!!!');
     return false;
   };
+
+  function toggleFullScreen() {
+    if (
+      (document.fullScreenElement && document.fullScreenElement !== null) ||
+      (!document.mozFullScreen && !document.webkitIsFullScreen)
+    ) {
+      if (document.documentElement.requestFullScreen) {
+        document.documentElement.requestFullScreen();
+      } else if (document.documentElement.mozRequestFullScreen) {
+        document.documentElement.mozRequestFullScreen();
+      } else if (document.documentElement.webkitRequestFullScreen) {
+        document.documentElement.webkitRequestFullScreen(
+          Element.ALLOW_KEYBOARD_INPUT
+        );
+      }
+    } else {
+      if (document.cancelFullScreen) {
+        document.cancelFullScreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+      }
+    }
+  }
+
+  const navigate = useNavigate();
 
   const handleCopy = (e) => {
     e.preventDefault();
@@ -133,53 +162,97 @@ React.useEffect(() => {
 
   const navigator = useNavigate();
   return (
-    <div className="flex flex-row">
-      <div className="w-[40%] p-10 flex flex-col items-center">
-        <h1 className="text-3xl font-bold">
-          Capture Your Face to start the Assesment
-        </h1>
-        <div className="flex flex-col items-center gap-y-4 mt-10" onCopy={handleCopy} onPaste={handlePaste}>
-          <Webcam className="w-[70%]" audio={false} ref={webcamRef} />
+    <>
+      <Modal
+        show={openModal}
+        size="md"
+        onClose={() => setOpenModal(false)}
+        popup>
+        <Modal.Header />
+        <Modal.Body>
+          <div className="text-center">
+            <i class="bx bx-info-circle text-6xl text-slate-300"></i>
+            <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+              Enable Full Screen to continue
+            </h3>
+            <div className="flex justify-center gap-4">
+              <button
+                className="bg-green-600 mx-10 px-10 mx-auto text-white rounded-xl  p-4"
+                onClick={() => {
+                  toggleFullScreen();
 
-          <button
-            className="bg-green-600 mx-10  mx-auto  text-white rounded-xl  p-4"
-            onClick={captureStartFace}>
-            Capture Start Face
-          </button>
+                  navigate("/testId");
+                }}>
+                Start Test
+              </button>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <div className="flex flex-row">
+        <div className="w-[40%] p-10 flex flex-col items-center">
+          <h1 className="text-3xl font-bold">
+            Capture Your Face to start the Assesment
+          </h1>
+          <div
+            className="flex flex-col items-center gap-y-4 mt-10"
+            onCopy={handleCopy}
+            onPaste={handlePaste}>
+            <Webcam className="w-[70%]" audio={false} ref={webcamRef} />
 
-          {startFace && (
-            <img src={startFace} className=" w-[70%]" alt="start-face" />
-          )}
-        </div>
-      </div>
-      <div className="flex flex-col w-[50%] p-8 border border-slate-100 rounded-xl justify-start items-center">
-        <h1 className="font-bold text-2xl">General Instructions</h1>
-        <div class="p-4 bg-gray-100 rounded-lg shadow-md">
-    <ol class="list-decimal list-inside">
-        <li class="mb-2">Read the exam instructions carefully.</li>
-        <li class="mb-2">Ensure you have all the necessary materials, such as pens, pencils, and scratch paper.</li>
-        <li class="mb-2">Find a quiet and well-lit space to take the exam.</li>
-        <li class="mb-2">Log in to the exam platform using the provided credentials.</li>
-        <li class="mb-2">Follow the on-screen instructions to start the exam.</li>
-        <li class="mb-2">Answer each question to the best of your ability.</li>
-        <li class="mb-2">Double-check your answers before submitting the exam.</li>
-        <li>Submit the exam before the deadline.</li>
-    </ol>
-</div>
-
-        <div className="flex flex-col justify-end items-end grow">
-          {startFace && (
             <button
-              className="bg-green-600 mx-10  mx-auto text-white rounded-xl  p-4"
-              onClick={() => {
-                navigator("/testId");
-              }}>
-              Continue
+              className="bg-green-600 mx-10  mx-auto  text-white rounded-xl  p-4"
+              onClick={captureStartFace}>
+              Capture Start Face
             </button>
-          )}
+
+            {startFace && (
+              <img src={startFace} className=" w-[70%]" alt="start-face" />
+            )}
+          </div>
+        </div>
+        <div className="flex flex-col w-[50%] p-8 border border-slate-100 rounded-xl justify-start items-center">
+          <h1 className="font-bold text-2xl">General Instructions</h1>
+          <div class="p-4 bg-gray-100 rounded-lg shadow-md">
+            <ol class="list-decimal list-inside">
+              <li class="mb-2">Read the exam instructions carefully.</li>
+              <li class="mb-2">
+                Ensure you have all the necessary materials, such as pens,
+                pencils, and scratch paper.
+              </li>
+              <li class="mb-2">
+                Find a quiet and well-lit space to take the exam.
+              </li>
+              <li class="mb-2">
+                Log in to the exam platform using the provided credentials.
+              </li>
+              <li class="mb-2">
+                Follow the on-screen instructions to start the exam.
+              </li>
+              <li class="mb-2">
+                Answer each question to the best of your ability.
+              </li>
+              <li class="mb-2">
+                Double-check your answers before submitting the exam.
+              </li>
+              <li>Submit the exam before the deadline.</li>
+            </ol>
+          </div>
+
+          <div className="flex flex-col justify-end items-end grow">
+            {startFace && (
+              <button
+                className="bg-green-600 mx-10  mx-auto text-white rounded-xl  p-4"
+                onClick={() => {
+                  setOpenModal(true);
+                }}>
+                Continue
+              </button>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
