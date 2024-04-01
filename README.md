@@ -86,3 +86,18 @@ ScoreCraft's Google Authentication feature provides a secure and streamlined log
 ## Dynamic Question Pooling 
 
 Questions to the each user is different to avoid cheating
+
+
+
+
+
+
+
+
+
+![image](https://github.com/07-Atharv/Team_anecdote/assets/87745693/37e082a4-d0b2-4574-8e6c-698d5b6ce673)
+
+![image](https://github.com/07-Atharv/Team_anecdote/assets/87745693/30c68e91-47e1-4b6b-a9ad-862c3f7c027b)
+
+![image](https://github.com/07-Atharv/Team_anecdote/assets/87745693/98c655bc-aa25-4428-b284-0c0167ac9fbf)
+
